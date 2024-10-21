@@ -1,11 +1,8 @@
 # The module 'db_steamers_remote.py' uses sqlalchemy as the database connector which is the preferred way for streamlit
 # The module 'db_steamers_remote2.py' uses mysql-connector-python
 
-import time
 import streamlit as st
-from sqlalchemy import text
-from datetime import datetime
-from config import TABLE_LEAGUES, TABLE_FIXTURES, TABLE_ODDS, TABLE_RESULTS, TABLE_BETS, TABLE_USERS
+from config import TABLE_LOG
 
 conn = st.connection('steamers', type='sql')
 
