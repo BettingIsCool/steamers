@@ -7,11 +7,13 @@ import pandas as pd
 from datetime import datetime
 import db_steamers_remote as db
 
-bets = db.get_log()
-bets_df = pd.DataFrame(data=bets)
-st.write(bets_df)
+while True:
 
-if datetime.now().second % 5 == 0:
-    st.rerun()
+    bets = db.get_log()
+    bets_df = pd.DataFrame(data=bets)
+    st.write(bets_df)
+
+    if datetime.now().second % 5 == 0:
+        st.rerun()
 
 
