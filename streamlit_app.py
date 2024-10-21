@@ -4,9 +4,14 @@ import streamlit as st
 st.set_page_config(page_title="ChasingSteamers (Ultra Feed) by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
 
 import pandas as pd
+from datetime import datetime
 import db_steamers_remote as db
-
 
 bets = db.get_log()
 bets_df = pd.DataFrame(data=bets)
 st.write(bets_df)
+
+if datetime.now().second % 5 == 0:
+    st.rerun()
+
+
