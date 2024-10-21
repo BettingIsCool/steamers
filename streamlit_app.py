@@ -6,7 +6,7 @@ st.set_page_config(page_title="ChasingSteamers (Ultra Feed) by BettingIsCool", p
 from streamlit_autorefresh import st_autorefresh
 
 # update every 5 seconds
-st_autorefresh(interval=5 * 1000, key="dataframerefresh")
+st_autorefresh(interval=5 * 1000, debounce=True, key="dataframerefresh")
 
 import pandas as pd
 import db_steamers_remote as db
