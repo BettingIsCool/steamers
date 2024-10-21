@@ -3,4 +3,5 @@ numpy
 pandas
 pendulum
 SQLAlchemy
+streamlit_autorefresh
 mysql-connector-python
