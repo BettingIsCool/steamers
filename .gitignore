@@ -7,10 +7,11 @@
 /db_oddspapi.py
 /db_pinnacle.py
 /db_steamers.py
-/db_steamers_remote.py
+/db_steamers_remote2.py
 /missing_events.csv
 /my_sql.py
 /oddsmath.py
 /oddspapi_rapidapi.py
 /oddspapi_v3.py
 /tools.py
+/db_steamers_remote2.py
