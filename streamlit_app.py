@@ -41,7 +41,7 @@ if selected_books:
 
     if bets_df['ID'].max() > st.session_state.id_max:
         st.session_state.id_max = bets_df['ID'].max()
-        st.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
+        #st.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
 
         # Example audio file or URL
         audio_file = "bell-ringing-05.wav"
