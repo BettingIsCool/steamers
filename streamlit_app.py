@@ -30,6 +30,8 @@ selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format
 selected_books = [f"'{s}'" for s in selected_books]
 selected_books = f"({','.join(selected_books)})"
 
+st.write(selected_books)
+
 if selected_books:
     bets = db.get_log(bookmakers=selected_books)
 
