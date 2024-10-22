@@ -22,6 +22,9 @@ from streamlit_autorefresh import st_autorefresh
 # update every 5 seconds
 st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
+if 'id_max' not in st.session_state:
+    st.session_state.id_max = 0
+
 selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
 selected_books = [f"'{s}'" for s in selected_books]
 selected_books = f"({','.join(selected_books)})"
@@ -34,9 +37,10 @@ if selected_books:
     styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
     st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
 
-    st.session_state.id_max = bets_df['ID'].max()
-    st.write(st.session_state.id_max)
+    if bets_df['ID'].max() > st.session_state.id_max:
+        st.session_state.id_max = bets_df['ID'].max()
+        st.sidebar.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
 
-    st.cache_data.clear()
-    st.sidebar.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
+st.cache_data.clear()
+
 
