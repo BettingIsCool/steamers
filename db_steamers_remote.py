@@ -8,7 +8,7 @@ conn = st.connection('steamers', type='sql')
 
 
 @st.cache_data()
-def get_log():
+def get_log(bookmakers: str):
     """
     :param username: The username of the individual placing the bets.
     :param sports: A string specifying which sports to include in the query.
@@ -18,4 +18,4 @@ def get_log():
     :param date_to: The end date for filtering bets.
     :return: A list of dictionaries containing bet details filtered by the given criteria.
     """
-    return conn.query(f"SELECT starts, sport_name, league_name, runner_home, runner_away, selection, market, line, prev_odds, curr_odds, droppct, oddstobeat, book_odds, book_val, book_name, book_url, timestamp, id FROM {TABLE_LOG} ORDER BY timestamp DESC").to_dict('records')
+    return conn.query(f"SELECT starts, sport_name, league_name, runner_home, runner_away, selection, market, line, prev_odds, curr_odds, droppct, oddstobeat, book_odds, book_val, book_name, book_url, timestamp, id FROM {TABLE_LOG} WHERE book_slug IN {bookmakers} ORDER BY timestamp DESC").to_dict('records')

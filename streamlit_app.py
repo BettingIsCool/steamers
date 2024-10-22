@@ -24,7 +24,10 @@ from streamlit_autorefresh import st_autorefresh
 st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
 selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
-bets = db.get_log()
+selected_books = [f"'{s}'" for s in selected_books]
+selected_books = f"({','.join(selected_books)})"
+bets = db.get_log(bookmakers=selected_books)
+
 bets_df = pd.DataFrame(data=bets)
 bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
 styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
