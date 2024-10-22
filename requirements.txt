@@ -1,7 +1,9 @@
 pytz
 numpy
+emoji
 pandas
 pendulum
 SQLAlchemy
+emoji-country-flag
 streamlit_autorefresh
 mysql-connector-python
