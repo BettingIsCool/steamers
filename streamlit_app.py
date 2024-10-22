@@ -2,6 +2,8 @@ from filecmp import clear_cache
 
 import streamlit as st
 
+from config import BOOKS
+
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
 st.set_page_config(page_title="ChasingSteamers (Ultra Feed) by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
 
@@ -15,14 +17,16 @@ from streamlit_autorefresh import st_autorefresh
 # TODO create detailed stats with overview per book
 # TODO deposit tipico/interwetten from bank account (check which accounts worthwhile from log)
 # TODO Your one-click app for profits
-# TODO add images/media to datafram
+# TODO add images/media to dataframe
+# TODO retrieve odds from all bookmakers (update list of bookmakers every day)
 
 # update every 5 seconds
 st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
+selected_books = st.selectbox(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
 bets = db.get_log()
 bets_df = pd.DataFrame(data=bets)
-bets_df = bets_df.rename(columns={'start_time': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
+bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
 styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
 st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
 st.cache_data.clear()
