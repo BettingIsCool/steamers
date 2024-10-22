@@ -1,4 +1,4 @@
-import base64
+import tools
 import streamlit as st
 
 from config import BOOKS
@@ -38,23 +38,10 @@ if selected_books:
     styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
     st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
 
-
+    # Play notification sound if new bet
     if bets_df['ID'].max() > st.session_state.id_max:
         st.session_state.id_max = bets_df['ID'].max()
-        #st.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
-
-        # Example audio file or URL
-        audio_file = "bell-ringing-05.wav"
-        audio_bytes = open(audio_file, 'rb').read()
-        encoded_audio = base64.b64encode(audio_bytes).decode()
-
-        # HTML to embed audio with autoplay and hidden controls
-        html_code = f'''
-        <audio autoplay style="display:none;">
-          <source src="data:audio/wav;base64,{encoded_audio}" type="audio/wav">
-        </audio>
-        '''
-        st.markdown(html_code, unsafe_allow_html=True)
+        tools.play_notification()
 
 st.cache_data.clear()
 
