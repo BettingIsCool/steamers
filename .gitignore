@@ -11,7 +11,9 @@
 /missing_events.csv
 /my_sql.py
 /oddsmath.py
-/oddspapi_rapidapi.py
-/oddspapi_v3.py
+/opapi.py
+/opapiv3.py
 /tools.py
 /db_steamers_remote2.py
+/opapi.py
+/opapiv3.py
