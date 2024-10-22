@@ -1,5 +1,6 @@
 from filecmp import clear_cache
 
+import beepy
 import streamlit as st
 
 from config import BOOKS
@@ -33,5 +34,6 @@ bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'le
 styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
 st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
 st.cache_data.clear()
-st.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
+beep(sound='coin')
+
 

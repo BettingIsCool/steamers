@@ -1,4 +1,5 @@
 pytz
+beepy
 numpy
 pandas
 pendulum
