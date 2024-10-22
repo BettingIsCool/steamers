@@ -50,7 +50,7 @@ if selected_books:
         # HTML to embed audio with autoplay and hidden controls
         html_code = f'''
         <audio autoplay style="display:none;">
-          <source src="data:audio/ogg;base64,{encoded_audio}" type="audio/ogg">
+          <source src="data:audio/wav;base64,{encoded_audio}" type="audio/wav">
         </audio>
         '''
         st.markdown(html_code, unsafe_allow_html=True)
