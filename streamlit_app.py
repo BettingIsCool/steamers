@@ -41,7 +41,7 @@ if selected_books:
     # Play notification sound if new bet
     if bets_df['ID'].max() > st.session_state.id_max:
         st.session_state.id_max = bets_df['ID'].max()
-        tools.play_notification()
+        toolkit.play_notification()
 
 st.cache_data.clear()
 

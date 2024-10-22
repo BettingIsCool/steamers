@@ -13,7 +13,6 @@
 /oddsmath.py
 /opapi.py
 /opapiv3.py
-/toolkit.py
 /db_steamers_remote2.py
 /opapi.py
 /opapiv3.py
@@ -22,5 +21,4 @@
 /_scan_ultra_steamers (spread).py
 /_scan_ultra_steamers (totals).py
 /db_opapi.py
-/toolkit
 /tools.py
