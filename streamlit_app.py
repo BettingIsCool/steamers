@@ -1,3 +1,5 @@
+from filecmp import clear_cache
+
 import streamlit as st
 
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
@@ -22,6 +24,7 @@ bets = db.get_log()
 bets_df = pd.DataFrame(data=bets)
 bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP'})
 st.write(bets_df)
+st.cache_data.clear()
 #bets_df = bets_df['STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY', 'SELECTION', 'MARKET', 'LINE', 'PODDS', 'CODDS', 'DROP', 'OTB', 'BODDS', 'BVAL', 'BNAME', 'BURL', 'TIMESTAMP']
 #styled_df = bets_df.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
 #st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
