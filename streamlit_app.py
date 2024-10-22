@@ -18,7 +18,7 @@ from streamlit_autorefresh import st_autorefresh
 # TODO Your one-click app for profits
 # TODO add images/media to dataframe
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
-# TODO line = -line if spread_away
+# TODO possibility to change domain .de to .at (or com interwetten) with USER_DOMAIN_CHANGES
 
 # update every 5 seconds
 st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
