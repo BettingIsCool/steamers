@@ -34,7 +34,9 @@ selected_books = [f"'{s}'" for s in selected_books]
 selected_books = f"({','.join(selected_books)})"
 
 if selected_books != '()':
+
     bets = db.get_log(bookmakers=selected_books)
+    st.write(bets)
 
     bets_df = pd.DataFrame(data=bets)
     bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
