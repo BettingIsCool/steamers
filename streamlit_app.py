@@ -25,28 +25,18 @@ st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
 selected_books = [f"'{s}'" for s in selected_books]
 selected_books = f"({','.join(selected_books)})"
-bets = db.get_log(bookmakers=selected_books)
 
-bets_df = pd.DataFrame(data=bets)
-bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
-styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
-st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
-st.cache_data.clear()
+if selected_books:
+    bets = db.get_log(bookmakers=selected_books)
 
-audio_file = open("bell-ringing-05.wav", "rb")
-audio_bytes = audio_file.read()
+    bets_df = pd.DataFrame(data=bets)
+    bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
+    styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
+    st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
 
-st.audio(audio_bytes, format="audio/ogg")
+    st.session_state.id_max = bets_df['ID'].max()
+    st.write(st.session_state.id_max)
 
-sample_rate = 44100  # 44100 samples per second
-seconds = 2  # Note duration of 2 seconds
-frequency_la = 440  # Our played note will be 440 Hz
-# Generate array with seconds*sample_rate steps, ranging between 0 and seconds
-t = np.linspace(0, seconds, seconds * sample_rate, False)
-# Generate a 440 Hz sine wave
-note_la = np.sin(frequency_la * t * 2 * np.pi)
-
-st.audio(note_la, sample_rate=sample_rate)
-
-#st.sidebar.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
+    st.cache_data.clear()
+    st.sidebar.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
 
