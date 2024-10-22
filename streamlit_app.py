@@ -20,6 +20,9 @@ from streamlit_autorefresh import st_autorefresh
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
 # TODO possibility to change domain .de to .at (or com interwetten) with USER_DOMAIN_CHANGES
 
+from st_paywall import add_auth
+add_auth(required=True)
+
 # update every 5 seconds
 st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
