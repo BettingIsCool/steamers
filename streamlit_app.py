@@ -1,4 +1,4 @@
-import numpy as np
+import base64
 import streamlit as st
 
 from config import BOOKS
@@ -18,6 +18,7 @@ from streamlit_autorefresh import st_autorefresh
 # TODO Your one-click app for profits
 # TODO add images/media to dataframe
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
+# TODO line = -line if spread_away
 
 # update every 5 seconds
 st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
@@ -40,6 +41,19 @@ if selected_books:
     if bets_df['ID'].max() > st.session_state.id_max:
         st.session_state.id_max = bets_df['ID'].max()
         st.sidebar.audio(data='bell-ringing-05.wav', format="audio/wav", autoplay=True)
+
+        # Example audio file or URL
+        audio_file = "bell-ringing-05.wav"
+        audio_bytes = open(audio_file, 'rb').read()
+        encoded_audio = base64.b64encode(audio_bytes).decode()
+
+        # HTML to embed audio with autoplay and hidden controls
+        html_code = f'''
+        <audio autoplay style="display:none;">
+          <source src="data:audio/ogg;base64,{encoded_audio}" type="audio/ogg">
+        </audio>
+        '''
+        st.markdown(html_code, unsafe_allow_html=True)
 
 st.cache_data.clear()
 

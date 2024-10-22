@@ -1,6 +1,7 @@
 pytz
 numpy
 pandas
+base64
 pendulum
 SQLAlchemy
 streamlit_autorefresh
