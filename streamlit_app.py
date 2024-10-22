@@ -7,6 +7,13 @@ import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
+# TODO add multiple product ids in st.secrets
+# TODO create slogans with grok
+# TODO sound_alert if id > id_max
+# TODO create detailed stats with overview per book
+# TODO deposit tipico/interwetten from bank account (check which accounts worthwhile from log)
+# TODO Your one-click app for profits
+
 # update every 5 seconds
 st_autorefresh(interval=5 * 1000, debounce=True, key="dataframerefresh")
 
