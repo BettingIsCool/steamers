@@ -116,7 +116,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
 
     with col_maxodds:
-        maxodds = st.slider(label='Maximum Odds', min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
+        maxodds = st.slider(label='Maximum Odds', min_value=minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
 
     if selected_books != '()':
 
