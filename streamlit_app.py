@@ -45,7 +45,7 @@ from st_paywall import add_auth
 add_auth(required=True)
 
 username = st.session_state.email
-st.session_state.user_dbid = db.get_user_dbid(username=username)
+
 placeholder1.empty()
 
 # Check if username is in database, otherwise append the user
@@ -63,8 +63,10 @@ if 'users_fetched' not in st.session_state:
         toolkit.get_active_session.clear()
         aux_active_session = toolkit.get_active_session(st.session_state.user_id)
 
+    st.session_state.user_dbid = db.get_user_dbid(username=username)
     st.session_state.users_fetched = True
 
+st.write(st.session_state.user_dbid)
 # Allow only ONE session per user
 # See https://discuss.streamlit.io/t/right-way-to-manage-same-user-opening-multiple-sessions/25608
 
