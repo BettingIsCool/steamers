@@ -7,6 +7,7 @@ from config import BOOKS, TEXT_LANDING_PAGE
 st.set_page_config(page_title="ChasingSteamers by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
 
 import pandas as pd
+import datetime
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
@@ -42,6 +43,29 @@ if 'display_landing_page_text' not in st.session_state:
 from st_paywall import add_auth
 add_auth(required=True)
 
+username = st.session_state.email
+placeholder1.empty()
+
+# Check if username is in database, otherwise append the user
+if 'users_fetched' not in st.session_state:
+    toolkit.clear_cache()
+    if username not in set(db.get_users()):
+        db.append_user(data={'username': username})
+        st.session_state.user_id = username
+        st.session_state.session_id = username + '_' + str(datetime.datetime.now())
+
+    # Create session token
+    else:
+        st.session_state.user_id = username
+        st.session_state.session_id = username + '_' + str(datetime.datetime.now())
+        toolkit.get_active_session.clear()
+        aux_active_session = toolkit.get_active_session(st.session_state.user_id)
+
+    st.session_state.users_fetched = True
+
+# Allow only ONE session per user
+# See https://discuss.streamlit.io/t/right-way-to-manage-same-user-opening-multiple-sessions/25608
+
 # update every 5 seconds
 st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
@@ -69,5 +93,3 @@ if selected_books != '()':
             toolkit.play_notification()
 
 st.cache_data.clear()
-
-

@@ -16,3 +16,20 @@ def play_notification():
             </audio>
             '''
     st.markdown(html_code, unsafe_allow_html=True)
+
+
+def clear_cache():
+    """
+    Clears the cached data for Streamlit application.
+
+    :return: None
+    """
+    st.cache_data.clear()
+
+
+@st.cache_resource()
+def get_active_session(username: str):
+    """
+    :return: The session ID of the active session for the specified user.
+    """
+    return st.session_state.session_id
