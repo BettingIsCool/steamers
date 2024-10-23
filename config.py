@@ -217,3 +217,9 @@ BOOKS.update({'wolfbet': 'WOLFBET'})
 BOOKS.update({'wplay.co': 'WPlay CO'})
 BOOKS.update({'yesplay': 'YesPlay'})
 BOOKS.update({'zebet.fr': 'ZEbet FR'})
+
+TEXT_LANDING_PAGE = """
+
+## **The ChasingSteamers Ultra Feed**. One click. Steady. profits.
+
+"""

@@ -1,24 +1,43 @@
 import toolkit
 import streamlit as st
 
-from config import BOOKS
+from config import BOOKS, TEXT_LANDING_PAGE
 
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
-st.set_page_config(page_title="ChasingSteamers (Ultra Feed) by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="ChasingSteamers by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
 
 import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
-# TODO add multiple product ids in st.secrets
-# TODO create slogans with grok
-# TODO sound_alert if id > id_max
+# TODO filters
+# TODO proper database indexing
+# TODO default settings (timezone, decimal/american, default books, default min val)
 # TODO create detailed stats with overview per book
-# TODO deposit tipico/interwetten from bank account (check which accounts worthwhile from log)
-# TODO Your one-click app for profits
 # TODO add images/media to dataframe
+# TODO 1 secs ago, 3 min ago in FIRST column (running counter streamlit)
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
 # TODO possibility to change domain .de to .at (or com interwetten) with USER_DOMAIN_CHANGES
+# TODO list bets for last hour
+# TODO add comments below table (bets for last hour, don't hot refresh, advice)
+# TODO overview of different plans (grid) -> advanced algorithm for ultra (logarithmic), supported sports,
+# TODO option to add to Track-A-Bet on the fly
+# TODO major refactoring
+
+placeholder1 = st.empty()
+
+if 'display_landing_page_text' not in st.session_state:
+
+    # Display landing page (pre login)
+    placeholder1.markdown(TEXT_LANDING_PAGE)
+    st.session_state.display_landing_page_text = True
+
+# Add google authentication (only users with a valid stripe subscription can log in)
+# Username must match the registered email-address at stripe
+# IMPORTANT: st_paywall is a forked library. This fork supports additional verification, i.e. if the user has a valid subscription for the product
+# The original st_paywall just looks into the stripe account for ANY valid subscription for that particular user, but doesn't care if this subscription is actually valid for a specific app.
+# See also https://github.com/tylerjrichards/st-paywall/issues/75
+# Importing this fork can be done with 'git+https://github.com/bettingiscool/st-paywall_fork.git@main' in the requirements.txt file
 
 from st_paywall import add_auth
 add_auth(required=True)
