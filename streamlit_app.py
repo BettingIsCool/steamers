@@ -97,8 +97,8 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         st.session_state.id_max = 0
 
     # Welcome message in the sidebar
-    st.sidebar.title(f"Welcome {username}")
-    st.sidebar.subheader(f"Default settings")
+    st.sidebar.subheader(f"Welcome {username}")
+    st.sidebar.write(f"Default settings")
 
 
     # update every 5 seconds
