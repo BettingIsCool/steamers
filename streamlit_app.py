@@ -66,30 +66,37 @@ if 'users_fetched' not in st.session_state:
 # Allow only ONE session per user
 # See https://discuss.streamlit.io/t/right-way-to-manage-same-user-opening-multiple-sessions/25608
 
-# update every 5 seconds
-st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
+if st.session_state.session_id == tools.get_active_session(st.session_state.user_id):
 
-if 'id_max' not in st.session_state:
-    st.session_state.id_max = 0
+    # update every 5 seconds
+    st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
-selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
-selected_books = [f"'{s}'" for s in selected_books]
-selected_books = f"({','.join(selected_books)})"
+    if 'id_max' not in st.session_state:
+        st.session_state.id_max = 0
 
-if selected_books != '()':
+    selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
+    selected_books = [f"'{s}'" for s in selected_books]
+    selected_books = f"({','.join(selected_books)})"
 
-    bets = db.get_log(bookmakers=selected_books)
+    if selected_books != '()':
 
-    if bets:
+        bets = db.get_log(bookmakers=selected_books)
 
-        bets_df = pd.DataFrame(data=bets)
-        bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
-        styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
-        st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
+        if bets:
 
-        # Play notification sound if new bet
-        if bets_df['ID'].max() > st.session_state.id_max:
-            st.session_state.id_max = bets_df['ID'].max()
-            toolkit.play_notification()
+            bets_df = pd.DataFrame(data=bets)
+            bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
+            styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
+            st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")})
 
-st.cache_data.clear()
+            # Play notification sound if new bet
+            if bets_df['ID'].max() > st.session_state.id_max:
+                st.session_state.id_max = bets_df['ID'].max()
+                toolkit.play_notification()
+
+    st.cache_data.clear()
+
+else:
+    st.info('Your session has expired')
+    for key in st.session_state.keys():
+        del st.session_state[key]
