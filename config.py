@@ -220,6 +220,8 @@ BOOKS.update({'zebet.fr': 'ZEbet FR'})
 
 TEXT_LANDING_PAGE = """
 
-## **The ChasingSteamers Ultra Feed**. One click. Steady. profits.
+## **The #ChasingSteamers Ultra Feed**
+
+#### One click. Steady. profits.
 
 """
