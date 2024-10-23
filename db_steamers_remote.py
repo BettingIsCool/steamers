@@ -108,7 +108,7 @@ def change_user_minodds(username: str, placeholder: st.delta_generator.DeltaGene
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Minimum odds changed successfully!')
     time.sleep(2)
     placeholder.empty()
 
@@ -123,7 +123,7 @@ def change_user_maxodds(username: str, placeholder: st.delta_generator.DeltaGene
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Maximum´ odds changed successfully!')
     time.sleep(2)
     placeholder.empty()
     
@@ -138,7 +138,7 @@ def change_user_book1(username: str, placeholder: st.delta_generator.DeltaGenera
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Book1 changed successfully!')
     time.sleep(2)
     placeholder.empty()
     
@@ -153,7 +153,7 @@ def change_user_book2(username: str, placeholder: st.delta_generator.DeltaGenera
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Book2 changed successfully!')
     time.sleep(2)
     placeholder.empty()
     
@@ -168,7 +168,7 @@ def change_user_book3(username: str, placeholder: st.delta_generator.DeltaGenera
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Book3 changed successfully!')
     time.sleep(2)
     placeholder.empty()
     
@@ -183,7 +183,7 @@ def change_user_book4(username: str, placeholder: st.delta_generator.DeltaGenera
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Book4 changed successfully!')
     time.sleep(2)
     placeholder.empty()
     
@@ -198,6 +198,6 @@ def change_user_book5(username: str, placeholder: st.delta_generator.DeltaGenera
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Book5 changed successfully!')
     time.sleep(2)
     placeholder.empty()
