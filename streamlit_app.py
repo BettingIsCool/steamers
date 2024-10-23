@@ -143,7 +143,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.session_state.default_timezone = st.sidebar.selectbox(label="Select timezone", options=timezone_options, index=timezone_options.index(st.session_state.default_timezone), on_change=db.change_user_timezone, args=(username, placeholder1), key='default_timezone_key')
 
     # Create text input for default tag
-    st.session_state.default_tag = st.sidebar.number_input("Select minimum value threshold", min_value=0.025, max_value=1.00, value=st.session_state.default_minval, on_change=db.change_user_minval, args=(username, placeholder1), key='default_minval_key')
+    st.session_state.default_tag = st.sidebar.number_input("Select minimum value threshold", min_value=0.025, max_value=1.00, step=0.005, format="%0.3f", value=st.session_state.default_minval, on_change=db.change_user_minval, args=(username, placeholder1), key='default_minval_key')
 
 
 else:
