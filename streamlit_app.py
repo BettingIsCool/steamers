@@ -107,26 +107,23 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     selected_books = [f"'{s}'" for s in selected_books]
     selected_books = f"({','.join(selected_books)})"
 
-    col_minval, col_minodds, col_maxodds, col_datefrom, col_dateto = st.columns([1, 1, 1, 1, 1])
+    col_minval, col_minodds, col_maxodds, col_datefrom, col_lookahead = st.columns([1, 1, 1, 1, 1])
 
     with col_minval:
-        minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
+        selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
 
     with col_minodds:
-        minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
+        selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
 
     with col_maxodds:
-        maxodds = st.slider(label='Maximum Odds', min_value=minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
+        selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
 
-    with col_datefrom:
-        selected_from_date = st.date_input(label='Start date', value='today', min_value=datetime.datetime.now())
-
-    with col_dateto:
-        selected_to_date = st.date_input(label='End date', value=selected_from_date + datetime.timedelta(days=365), min_value=datetime.datetime.now(), max_value=selected_from_date + datetime.timedelta(days=365))
+    with col_lookahead:
+        selected_lookahead = st.date_input(label='Start date', value='today', min_value=datetime.datetime.now())
 
     if selected_books != '()':
 
-        bets = db.get_log(bookmakers=selected_books)
+        bets = db.get_log(bookmakers=selected_books, minval=selected_minval, minodds=selected_minodds, maxodds=selected_maxodds, lookahead=selected_lookahead)
 
         if bets:
 
