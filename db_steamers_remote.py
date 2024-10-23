@@ -30,6 +30,11 @@ def get_users():
     return conn.query(f"SELECT username FROM {TABLE_USERS}")['username'].tolist()
 
 
+def get_user_dbid(username: str):
+
+    return conn.query(f"SELECT id FROM {TABLE_USERS} WHERE username = '{username}'")['id'].tolist()
+
+
 def append_user(data: dict):
     """
     :param data: Dictionary containing user data with the key 'username'.

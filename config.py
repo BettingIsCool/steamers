@@ -1,7 +1,7 @@
 TABLE_LOG, TABLE_USERS = 'log', 'users'
 
 USER_DOMAIN_CHANGES = dict()
-USER_DOMAIN_CHANGES.update({'contact@bettingiscool.com': {'interwetten.de': 'interwetten.com', 'tipico.de': 'tipico.at'}})
+USER_DOMAIN_CHANGES.update({1: {'interwetten.de': 'interwetten.com', 'tipico.de': 'tipico.com'}})
 
 BOOKS = dict()
 BOOKS.update({'10bet': '10bet'})

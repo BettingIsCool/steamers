@@ -1,7 +1,7 @@
 import toolkit
 import streamlit as st
 
-from config import BOOKS, TEXT_LANDING_PAGE
+from config import BOOKS, TEXT_LANDING_PAGE, USER_DOMAIN_CHANGES
 
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
 st.set_page_config(page_title="ChasingSteamers by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
@@ -11,7 +11,7 @@ import datetime
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
-# TODO filters
+# TODO min_odds, max_odds, time_range filters
 # TODO proper database indexing
 # TODO default settings (timezone, decimal/american, default books, default min val)
 # TODO create detailed stats with overview per book
@@ -24,6 +24,7 @@ from streamlit_autorefresh import st_autorefresh
 # TODO overview of different plans (grid) -> advanced algorithm for ultra (logarithmic), supported sports,
 # TODO option to add to Track-A-Bet on the fly
 # TODO major refactoring
+
 
 placeholder1 = st.empty()
 
@@ -52,6 +53,7 @@ if 'users_fetched' not in st.session_state:
     if username not in set(db.get_users()):
         db.append_user(data={'username': username})
         st.session_state.user_id = username
+        st.session_state.user_dbid = db.get_user_dbid(username=username)
         st.session_state.session_id = username + '_' + str(datetime.datetime.now())
 
     # Create session token
@@ -85,8 +87,16 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         if bets:
 
             bets_df = pd.DataFrame(data=bets)
+
+            # Change bookie domains
+            if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
+                for domain_original, domain_changed in USER_DOMAIN_CHANGES[st.session_state.user_dbid]:
+                    for index, row in bets_df.iterrows():
+                        if domain_original in row['book_url']:
+                            row['book_url'].replace(domain_original, domain_changed)
+
             bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
-            bets_df = bets_df[['TIMESTAMP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY', 'SELECTION', 'MARKET', 'LINE', 'BODDS', 'BVAL', 'BNAME', 'BURL', 'ID']]
+            bets_df = bets_df[['TIMESTAMP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY', 'MARKET', 'SELECTION', 'LINE', 'BODDS', 'BVAL', 'BNAME', 'BURL', 'ID']]
 
             styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
             st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")}, hide_index=True)
