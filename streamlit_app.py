@@ -66,7 +66,7 @@ if 'users_fetched' not in st.session_state:
 # Allow only ONE session per user
 # See https://discuss.streamlit.io/t/right-way-to-manage-same-user-opening-multiple-sessions/25608
 
-if st.session_state.session_id == tools.get_active_session(st.session_state.user_id):
+if st.session_state.session_id == toolkit.get_active_session(st.session_state.user_id):
 
     # update every 5 seconds
     st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
