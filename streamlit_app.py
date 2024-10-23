@@ -157,7 +157,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
             bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROPPCT', 'oddstobeat': 'OTB', 'book_odds': 'ODDS', 'book_val': 'VALUE', 'book_name': 'BOOK', 'book_url': 'LINK', 'id': 'ID', 'bet_str': 'BET', 'drop_str': 'DROP', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'UPDATED'})
             bets_df = bets_df[['UPDATED', 'BET', 'ODDS', 'BOOK', 'VALUE', 'DROP', 'OTB', 'LINK', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']]
 
-            if st.session_state.odds_display == 'American':
+            if st.session_state.default_odds_display == 'American':
                 bets_df.ODDS = bets_df.ODDS.apply(toolkit.get_american_odds)
                 bets_df.OTB = bets_df.OTB.apply(toolkit.get_american_odds)
 
