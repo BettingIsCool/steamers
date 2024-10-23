@@ -137,7 +137,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
             try:
                 bets_df.starts_utc = bets_df.starts_utc.dt.tz_localize('Europe/London').dt.tz_convert(st.session_state.timezone).dt.tz_localize(None)
             except Exception as ex:
-                pass
+                st.write(ex)
 
             # Change bookie domains
             if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
