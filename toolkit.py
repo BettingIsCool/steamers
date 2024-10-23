@@ -45,3 +45,21 @@ def color_cells(val: float):
         color = 'gray'
 
     return f'color: {color}'
+
+
+def get_american_odds(decimal_odds: float):
+    """
+    :param decimal_odds: The decimal odds value to be converted to American odds format.
+    :return: The corresponding American odds value.
+    """
+    return int((decimal_odds - 1) * 100) if decimal_odds >= 2.00 else int(-100 / (decimal_odds - 1))
+
+
+def get_decimal_odds(american_odds: int):
+    """
+    :param american_odds: American odds value for which the decimal odds are to be calculated.
+    :type american_odds: int
+    :return: Decimal odds corresponding to the given American odds.
+    :rtype: float
+    """
+    return american_odds / 100 + 1 if american_odds >= 0 else - 100 / american_odds + 1
