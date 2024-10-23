@@ -107,7 +107,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     selected_books = [f"'{s}'" for s in selected_books]
     selected_books = f"({','.join(selected_books)})"
 
-    col_minval, col_minodds, col_maxodds, col_datefrom, col_lookahead = st.columns([1, 1, 1, 1, 1])
+    col_minval, col_minodds, col_maxodds, col_lookahead = st.columns([1, 1, 1, 1])
 
     with col_minval:
         selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
