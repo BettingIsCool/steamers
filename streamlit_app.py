@@ -67,8 +67,6 @@ if 'users_fetched' not in st.session_state:
     st.session_state.users_fetched = True
 
 
-st.write(st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys())
-
 # Allow only ONE session per user
 # See https://discuss.streamlit.io/t/right-way-to-manage-same-user-opening-multiple-sessions/25608
 
@@ -95,11 +93,11 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
 
             # Change bookie domains
-            #if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
-            #    for domain_original, domain_changed in USER_DOMAIN_CHANGES[st.session_state.user_dbid]:
-            #        for index, row in bets_df.iterrows():
-            #            if domain_original in row['book_url']:
-            #                row['book_url'].replace(domain_original, domain_changed)
+            if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
+                for domain_original, domain_changed in USER_DOMAIN_CHANGES[st.session_state.user_dbid]:
+                    for index, row in bets_df.iterrows():
+                        if domain_original in row['book_url']:
+                            row['book_url'].replace(domain_original, domain_changed)
 
             bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
             bets_df = bets_df[['TIMESTAMP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY', 'MARKET', 'SELECTION', 'LINE', 'BODDS', 'BVAL', 'BNAME', 'BURL', 'ID']]
