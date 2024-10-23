@@ -93,7 +93,7 @@ def change_user_minval(username: str, placeholder: st.delta_generator.DeltaGener
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Odds format changed successfully!')
+    placeholder.success('Minimum value threshold changed successfully!')
     time.sleep(2)
     placeholder.empty()
 
