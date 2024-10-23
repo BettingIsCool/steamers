@@ -90,7 +90,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
             bets_df = pd.DataFrame(data=bets)
 
-
+            st.write(USER_DOMAIN_CHANGES[st.session_state.user_dbid])
 
             # Change bookie domains
             if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
