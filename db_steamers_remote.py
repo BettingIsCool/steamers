@@ -2,6 +2,7 @@
 # The module 'db_steamers_remote2.py' uses mysql-connector-python
 
 import streamlit as st
+from sqlalchemy import text
 from config import TABLE_LOG, TABLE_USERS
 
 conn = st.connection('steamers', type='sql')
