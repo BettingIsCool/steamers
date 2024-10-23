@@ -135,7 +135,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
             # There is a possibility that the conversion fails if the timestamp falls into a time change
             # See https://github.com/streamlit/streamlit/issues/1288
             try:
-                bets_df.starts = bets_df.starts.dt.tz_localize('Europe/London').dt.tz_convert(st.session_state.timezone).dt.tz_localize(None)
+                bets_df.starts_utc = bets_df.starts_utc.dt.tz_localize('Europe/London').dt.tz_convert(st.session_state.timezone).dt.tz_localize(None)
             except Exception as ex:
                 pass
 
