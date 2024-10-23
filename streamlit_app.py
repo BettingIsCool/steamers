@@ -86,7 +86,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
             bets_df = pd.DataFrame(data=bets)
             bets_df = bets_df.rename(columns={'starts': 'STARTS', 'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'timestamp': 'TIMESTAMP', 'id': 'ID'})
-            bets_df = bets_df[['TIMESTAMP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY', 'SELECTION', 'MARKET', 'LINE', 'BOODS', 'BVAL', 'BNAME', 'BURL', 'ID']]
+            bets_df = bets_df[['TIMESTAMP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY', 'SELECTION', 'MARKET', 'LINE', 'BODDS', 'BVAL', 'BNAME', 'BURL', 'ID']]
 
             styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
             st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")}, hide_index=True)
