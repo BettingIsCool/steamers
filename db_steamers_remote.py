@@ -57,7 +57,7 @@ def change_user_odds_display(username: str, placeholder: st.delta_generator.Delt
 
     st.session_state.default_odds_display = st.session_state.default_odds_display_key
 
-    query = f"UPDATE {TABLE_USERS} SET odds_display = '{st.session_state.default_odds_display}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_odds_display = '{st.session_state.default_odds_display}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -72,7 +72,7 @@ def change_user_timezone(username: str, placeholder: st.delta_generator.DeltaGen
 
     st.session_state.default_timezone = st.session_state.default_timezone_key
 
-    query = f"UPDATE {TABLE_USERS} SET timezone = '{st.session_state.default_timezone}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_timezone = '{st.session_state.default_timezone}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -87,7 +87,7 @@ def change_user_minval(username: str, placeholder: st.delta_generator.DeltaGener
 
     st.session_state.default_minval = st.session_state.default_minval_key
 
-    query = f"UPDATE {TABLE_USERS} SET minval = '{st.session_state.default_minval}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_minval = '{st.session_state.default_minval}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -102,7 +102,7 @@ def change_user_minodds(username: str, placeholder: st.delta_generator.DeltaGene
 
     st.session_state.default_minodds = st.session_state.default_minodds_key
 
-    query = f"UPDATE {TABLE_USERS} SET minodds = '{st.session_state.default_minodds}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_minodds = '{st.session_state.default_minodds}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -117,7 +117,7 @@ def change_user_maxodds(username: str, placeholder: st.delta_generator.DeltaGene
 
     st.session_state.default_maxodds = st.session_state.default_maxodds_key
 
-    query = f"UPDATE {TABLE_USERS} SET maxodds = '{st.session_state.default_maxodds}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_maxodds = '{st.session_state.default_maxodds}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -132,7 +132,7 @@ def change_user_book1(username: str, placeholder: st.delta_generator.DeltaGenera
 
     st.session_state.default_book1 = st.session_state.default_book1_key
 
-    query = f"UPDATE {TABLE_USERS} SET book1 = '{st.session_state.default_book1}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_book1 = '{st.session_state.default_book1}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -147,7 +147,7 @@ def change_user_book2(username: str, placeholder: st.delta_generator.DeltaGenera
 
     st.session_state.default_book2 = st.session_state.default_book2_key
 
-    query = f"UPDATE {TABLE_USERS} SET book2 = '{st.session_state.default_book2}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_book2 = '{st.session_state.default_book2}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -162,7 +162,7 @@ def change_user_book3(username: str, placeholder: st.delta_generator.DeltaGenera
 
     st.session_state.default_book3 = st.session_state.default_book3_key
 
-    query = f"UPDATE {TABLE_USERS} SET book3 = '{st.session_state.default_book3}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_book3 = '{st.session_state.default_book3}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -177,7 +177,7 @@ def change_user_book4(username: str, placeholder: st.delta_generator.DeltaGenera
 
     st.session_state.default_book4 = st.session_state.default_book4_key
 
-    query = f"UPDATE {TABLE_USERS} SET book4 = '{st.session_state.default_book4}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_book4 = '{st.session_state.default_book4}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
@@ -192,7 +192,7 @@ def change_user_book5(username: str, placeholder: st.delta_generator.DeltaGenera
 
     st.session_state.default_book5 = st.session_state.default_book5_key
 
-    query = f"UPDATE {TABLE_USERS} SET book5 = '{st.session_state.default_book5}' WHERE username = '{username}'"
+    query = f"UPDATE {TABLE_USERS} SET default_book5 = '{st.session_state.default_book5}' WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
