@@ -99,7 +99,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
             # Compute time difference for UPDATED column
             for index, row in bets_df.iterrows():
-                bets_df.at[index, 'updated_ago'] = f"{int((datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - row['timestamp_utc']).total_seconds())} secs ago"
+                bets_df.at[index, 'updated_ago'] = f"{int((datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - row['timestamp_utc']).total_seconds())} s ago"
 
             # Play notification sound if new bet
             if bets_df['id'].max() > st.session_state.id_max:
