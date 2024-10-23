@@ -136,7 +136,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     # Create a radio button for Decimal/American odds format
     odds_display_options = ['Decimal', 'American']
-    st.session_state.default_odds_display = st.sidebar.radio(label="Select odds format", options=odds_display_options, index=odds_display_options.index(st.session_state.default_odds_display), horizontal=True, on_change=db.change_user_odds_display, args=(username, placeholder1), key='default_odds_display')
+    st.session_state.default_odds_display = st.sidebar.radio(label="Select odds format", options=odds_display_options, index=odds_display_options.index(st.session_state.default_odds_display), horizontal=True, on_change=db.change_user_odds_display, args=(username, placeholder1), key='default_odds_display_key')
 
     # Create selectbox for timezone
     timezone_options = pytz.common_timezones
