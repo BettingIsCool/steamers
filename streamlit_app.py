@@ -103,16 +103,20 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     # update every 5 seconds
     st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
-    col_minval, col_minodds, col_maxodds, col_datefrom, col_dateto = st.columns([1, 1, 1, 1, 1])
-
     selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), default=[st.session_state.default_book1, st.session_state.default_book2, st.session_state.default_book3, st.session_state.default_book4, st.session_state.default_book5], format_func=lambda x: BOOKS.get(x), help='Default bookmakers will always show up. You can add more bookmakers here.')
     selected_books = [f"'{s}'" for s in selected_books]
     selected_books = f"({','.join(selected_books)})"
 
+    col_minval, col_minodds, col_maxodds, col_datefrom, col_dateto = st.columns([1, 1, 1, 1, 1])
+
     with col_minval:
-        min_diff = st.slider(label='Min Val', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005)
+        minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
 
+    with col_minodds:
+        minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=1000.00, value=st.session_state.default_minodds, step=0.01, format="%0.2f")
 
+    with col_maxodds:
+        maxodds = st.slider(label='Maximum Odds', min_value=st.session_state.default_minodds, max_value=1000.00, value=st.session_state.default_maxodds, step=0.01, format="%0.2f")
 
     if selected_books != '()':
 
