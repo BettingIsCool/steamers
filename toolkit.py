@@ -33,3 +33,15 @@ def get_active_session(username: str):
     :return: The session ID of the active session for the specified user.
     """
     return st.session_state.session_id
+
+
+def color_cells(val: float):
+
+    if val >= 0.05:
+        color = 'green'
+    elif val > 0:
+        color = 'yellow'
+    else:
+        color = 'gray'
+
+    return f'color: {color}'
