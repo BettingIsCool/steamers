@@ -92,10 +92,10 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
             bets_df['book_url'].replace('.de', '.com', inplace=True)
 
             # Change bookie domains
-            if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
-                for domain_original, domain_changed in USER_DOMAIN_CHANGES[st.session_state.user_dbid].items():
-                    bets_df['book_url'].replace(domain_original, domain_changed, inplace=True)
-                    st.write(domain_original, domain_changed)
+            #if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
+            #    for domain_original, domain_changed in USER_DOMAIN_CHANGES[st.session_state.user_dbid].items():
+            #        bets_df['book_url'].replace(domain_original, domain_changed, inplace=True)
+            #        st.write(domain_original, domain_changed)
                     #for index, row in bets_df.iterrows():
                     #    if domain_original in row['book_url']:
                     #        st.write('yes')
