@@ -96,6 +96,10 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     if 'id_max' not in st.session_state:
         st.session_state.id_max = 0
 
+    # Welcome message in the sidebar
+    st.sidebar.title(f"Welcome {username}")
+    st.sidebar.subheader(f"Default settings")
+
 
     # update every 5 seconds
     st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
