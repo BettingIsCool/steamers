@@ -113,7 +113,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
 
     with col_minodds:
-        minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=100.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
+        minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
 
     with col_maxodds:
         maxodds = st.slider(label='Maximum Odds', min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
@@ -160,7 +160,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.session_state.default_minval = st.sidebar.number_input("Select default minimum value threshold", min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f", on_change=db.change_user_minval, args=(username, placeholder1), key='default_minval_key', help='Enter percentage as decimal number. 5% = 0.05')
 
     # Create number input for default_minodds
-    st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=1.00, max_value=100.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f", on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
+    st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f", on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
 
     # Create number input for default_maxodds
     st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
