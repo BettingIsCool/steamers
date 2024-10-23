@@ -171,7 +171,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
 
     # Create number input for default_lookahead
-    st.session_state.default_lookahead = st.sidebar.number_input("Select default lookahead", min_value=st.session_state.default_lookahead, max_value=500, value=st.session_state.default_lookahead, step=1, on_change=db.change_user_lookahead, args=(username, placeholder1), key='default_lookahead_key')
+    st.session_state.default_lookahead = st.sidebar.number_input("Select default lookahead", min_value=1, max_value=500, value=st.session_state.default_lookahead, step=1, on_change=db.change_user_lookahead, args=(username, placeholder1), key='default_lookahead_key')
 
     # Create text input for default_book1
     st.session_state.default_book1 = st.sidebar.selectbox(label="Select default bookmaker 1", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book1), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book1, args=(username, placeholder1), key='default_book1_key')
