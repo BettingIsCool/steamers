@@ -53,7 +53,6 @@ if 'users_fetched' not in st.session_state:
     if username not in set(db.get_users()):
         db.append_user(data={'username': username})
         st.session_state.user_id = username
-        st.session_state.user_dbid = db.get_user_dbid(username=username)
         st.session_state.session_id = username + '_' + str(datetime.datetime.now())
 
     # Create session token
@@ -63,6 +62,7 @@ if 'users_fetched' not in st.session_state:
         toolkit.get_active_session.clear()
         aux_active_session = toolkit.get_active_session(st.session_state.user_id)
 
+    st.session_state.user_dbid = db.get_user_dbid(username=username)
     st.session_state.users_fetched = True
 
 # Allow only ONE session per user
