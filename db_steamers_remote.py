@@ -45,3 +45,11 @@ def append_user(data: dict):
     with conn.session as session:
         session.execute(text(query), params=dict(username=data['username'], odds_display='Decimal', timezone='Europe/London', default_minval=0.05, default_book1='', default_book2='', default_book3='', default_book4='', default_book5=''))
         session.commit()
+
+
+def get_user_data(username: str, param: str):
+    """
+    :param username: The username of the user whose odds display is being retrieved.
+    :return: A list of odds displays associated with the given username.
+    """
+    return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()

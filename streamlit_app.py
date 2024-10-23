@@ -17,14 +17,10 @@ from streamlit_autorefresh import st_autorefresh
 # TODO proper database indexing
 # TODO default settings (timezone, decimal/american, default books, default min val)
 # TODO create detailed stats with overview per book
-# TODO add images/media to dataframe
-# TODO 1 secs ago, 3 min ago in FIRST column (running counter streamlit)
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
-# TODO possibility to change domain .de to .at (or com interwetten) with USER_DOMAIN_CHANGES
-# TODO list bets for last hour
 # TODO add comments below table (bets for last hour, don't hot refresh, advice)
-# TODO overview of different plans (grid) -> advanced algorithm for ultra (logarithmic), supported sports,
 # TODO option to add to Track-A-Bet on the fly
+# TODO add media
 # TODO major refactoring
 
 
@@ -47,6 +43,8 @@ from st_paywall import add_auth
 add_auth(required=True)
 
 username = st.session_state.email
+
+st.write(db.get_user_data(username=username, param='default_odds_display'))
 
 placeholder1.empty()
 
@@ -74,11 +72,34 @@ if 'users_fetched' not in st.session_state:
 
 if st.session_state.session_id == toolkit.get_active_session(st.session_state.user_id):
 
-    # update every 5 seconds
-    st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
+    # Get user preferences
+    if 'default_odds_display' not in st.session_state:
+        st.session_state.default_odds_display = db.get_user_odds_display(username=username)[0]
+    if 'default_timezone' not in st.session_state:
+        st.session_state.default_timezone = db.get_user_timezone(username=username)[0]
+    if 'default_minval' not in st.session_state:
+        st.session_state.default_minval = db.get_user_minval(username=username)[0]
+    if 'default_minodds' not in st.session_state:
+        st.session_state.default_minodds = db.get_user_minodds(username=username)[0]
+    if 'default_maxodds' not in st.session_state:
+        st.session_state.default_maxodds = db.get_user_maxodds(username=username)[0]
+    if 'default_book1' not in st.session_state:
+        st.session_state.default_book1 = db.get_user_book1(username=username)[0]
+    if 'default_book2' not in st.session_state:
+        st.session_state.default_book2 = db.get_user_book2(username=username)[0]
+    if 'default_book3' not in st.session_state:
+        st.session_state.default_book3 = db.get_user_book3(username=username)[0]
+    if 'default_book4' not in st.session_state:
+        st.session_state.default_book4 = db.get_user_book4(username=username)[0]
+    if 'default_book5' not in st.session_state:
+        st.session_state.default_book5 = db.get_user_book5(username=username)[0]
 
     if 'id_max' not in st.session_state:
         st.session_state.id_max = 0
+
+
+    # update every 5 seconds
+    st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
     selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
     selected_books = [f"'{s}'" for s in selected_books]
