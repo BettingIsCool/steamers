@@ -63,11 +63,11 @@ if 'users_fetched' not in st.session_state:
         toolkit.get_active_session.clear()
         aux_active_session = toolkit.get_active_session(st.session_state.user_id)
 
-    st.session_state.user_dbid = db.get_user_dbid(username=username)
+    st.session_state.user_dbid = db.get_user_dbid(username=username)[0]
     st.session_state.users_fetched = True
 
 
-#st.write(st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys())
+st.write(st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys())
 
 # Allow only ONE session per user
 # See https://discuss.streamlit.io/t/right-way-to-manage-same-user-opening-multiple-sessions/25608
