@@ -119,7 +119,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
 
     with col_lookahead:
-        selected_lookahead = st.date_input(label='Start date', value='today', min_value=datetime.datetime.now())
+        selected_lookahead = st.slider(label='Lookahead', min_value=1, max_value=1000, value=8, step=1, help='Show only events that start within the next x hours.')
 
     if selected_books != '()':
 
