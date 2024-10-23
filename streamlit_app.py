@@ -155,19 +155,19 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=1000.00, value=st.session_state.default_maxodds, step=0.01, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
 
     # Create text input for default_book1
-    st.session_state.default_book1 = st.sidebar.selectbox(label="Select default bookmaker 1", options=list(BOOKS.values()), index=list(BOOKS.values()).index(st.session_state.default_book1), on_change=db.change_user_book1, args=(username, placeholder1), key='default_book1_key')
-    
+    st.session_state.default_book1 = st.sidebar.selectbox(label="Select default bookmaker 1", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book1), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book1, args=(username, placeholder1), key='default_book1_key')
+
     # Create text input for default_book2
-    st.session_state.default_book2 = st.sidebar.selectbox(label="Select default bookmaker 2", options=list(BOOKS.values()), index=list(BOOKS.values()).index(st.session_state.default_book2), on_change=db.change_user_book2, args=(username, placeholder1), key='default_book2_key')
-    
+    st.session_state.default_book2 = st.sidebar.selectbox(label="Select default bookmaker 2", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book2), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book2, args=(username, placeholder1), key='default_book2_key')
+
     # Create text input for default_book3
-    st.session_state.default_book3 = st.sidebar.selectbox(label="Select default bookmaker 3", options=list(BOOKS.values()), index=list(BOOKS.values()).index(st.session_state.default_book3), on_change=db.change_user_book3, args=(username, placeholder1), key='default_book3_key')
-    
+    st.session_state.default_book3 = st.sidebar.selectbox(label="Select default bookmaker 3", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book3), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book3, args=(username, placeholder1), key='default_book3_key')
+
     # Create text input for default_book4
-    st.session_state.default_book4 = st.sidebar.selectbox(label="Select default bookmaker 4", options=list(BOOKS.values()), index=list(BOOKS.values()).index(st.session_state.default_book4), on_change=db.change_user_book4, args=(username, placeholder1), key='default_book4_key')
-    
+    st.session_state.default_book4 = st.sidebar.selectbox(label="Select default bookmaker 4", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book4), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book4, args=(username, placeholder1), key='default_book4_key')
+
     # Create text input for default_book5
-    st.session_state.default_book5 = st.sidebar.selectbox(label="Select default bookmaker 5", options=list(BOOKS.values()), index=list(BOOKS.values()).index(st.session_state.default_book5), on_change=db.change_user_book5, args=(username, placeholder1), key='default_book5_key')
+    st.session_state.default_book5 = st.sidebar.selectbox(label="Select default bookmaker 5", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book5), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book5, args=(username, placeholder1), key='default_book5_key')
 
 else:
     st.info('Your session has expired')
