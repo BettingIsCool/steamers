@@ -102,7 +102,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
                 row['updated_ago'] = (datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - row['timestamp_utc'].replace(tzinfo=None)).total_seconds()
 
             bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'id': 'ID', 'bet_str': 'BET', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'UPDATED'})
-            bets_df = bets_df[['UPDATED', 'BET', 'BVAL', 'BURL', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY', 'MARKET', 'SELECTION', 'LINE', 'BODDS', 'BVAL', 'BNAME', 'ID']]
+            bets_df = bets_df[['UPDATED', 'BET', 'BVAL', 'BURL', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']]
 
             styled_df = bets_df.style.format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'BODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'BVAL': '{:,.2%}'.format})
             st.dataframe(styled_df, column_config={"BURL": st.column_config.LinkColumn("BURL")}, hide_index=True)
