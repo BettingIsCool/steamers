@@ -99,7 +99,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
             # Compute time difference for UPDATED column
             #for index, row in bets_df.iterrows():
-            bets_df['updated_ago'] = (datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - bets_df['timestamp_utc']).total_seconds()
+            bets_df['updated_ago'] = (datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) - bets_df['timestamp_utc']).seconds
 
             bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'BODDS', 'book_val': 'BVAL', 'book_name': 'BNAME', 'book_url': 'BURL', 'id': 'ID', 'bet_str': 'BET', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'UPDATED'})
             bets_df = bets_df[['UPDATED', 'BET', 'BVAL', 'BURL', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']]
