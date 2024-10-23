@@ -109,7 +109,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
             bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROP', 'oddstobeat': 'OTB', 'book_odds': 'ODDS', 'book_val': 'VALUE', 'book_name': 'BOOK', 'book_url': 'LINK', 'id': 'ID', 'bet_str': 'BET', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'UPDATED'})
             bets_df = bets_df[['UPDATED', 'BET', 'ODDS', 'OTB', 'VALUE', 'BOOK', 'LINK', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']]
 
-            styled_df = bets_df.style.applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'VALUE': '{:,.2%}'.format})
+            styled_df = bets_df.style.set_properties(**{'font-color': 'gray'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'VALUE': '{:,.2%}'.format})
             st.dataframe(styled_df, column_config={"LINK": st.column_config.LinkColumn("LINK")}, hide_index=True)
 
     st.cache_data.clear()
