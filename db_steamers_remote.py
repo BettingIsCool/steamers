@@ -19,7 +19,7 @@ def get_log(bookmakers: str):
     :param date_to: The end date for filtering bets.
     :return: A list of dictionaries containing bet details filtered by the given criteria.
     """
-    return conn.query(f"SELECT starts, sport_name, league_name, runner_home, runner_away, selection, market, line, prev_odds, curr_odds, droppct, oddstobeat, book_odds, book_val, book_name, book_url, timestamp, id, bet_str, timestamp_utc, starts_utc, updated_ago FROM {TABLE_LOG} WHERE book_slug IN {bookmakers} AND TIMESTAMPDIFF(SECOND, timestamp_utc, NOW()) < 3600 ORDER BY timestamp_utc DESC").to_dict('records')
+    return conn.query(f"SELECT starts, sport_name, league_name, runner_home, runner_away, selection, market, line, prev_odds, curr_odds, droppct, oddstobeat, book_odds, book_val, book_name, book_url, timestamp, id, bet_str, timestamp_utc, starts_utc, updated_ago, drop_str FROM {TABLE_LOG} WHERE book_slug IN {bookmakers} AND TIMESTAMPDIFF(SECOND, timestamp_utc, NOW()) < 3600 ORDER BY timestamp_utc DESC").to_dict('records')
 
 
 def get_users():
