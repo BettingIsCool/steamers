@@ -1,5 +1,4 @@
-from datetime import datetime
-
+import pytz
 import toolkit
 import streamlit as st
 
@@ -8,8 +7,8 @@ from config import BOOKS, TEXT_LANDING_PAGE, USER_DOMAIN_CHANGES
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
 st.set_page_config(page_title="ChasingSteamers by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
 
-import pandas as pd
 import datetime
+import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
@@ -44,7 +43,7 @@ add_auth(required=True)
 
 username = st.session_state.email
 
-st.write(db.get_user_data(username=username, param='default_odds_display'))
+st.write()
 
 placeholder1.empty()
 
@@ -74,25 +73,25 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     # Get user preferences
     if 'default_odds_display' not in st.session_state:
-        st.session_state.default_odds_display = db.get_user_odds_display(username=username)[0]
+        st.session_state.default_odds_display = db.get_user_setting(username=username, param='default_odds_display')
     if 'default_timezone' not in st.session_state:
-        st.session_state.default_timezone = db.get_user_timezone(username=username)[0]
+        st.session_state.default_timezone = db.get_user_setting(username=username, param='default_timezone')
     if 'default_minval' not in st.session_state:
-        st.session_state.default_minval = db.get_user_minval(username=username)[0]
+        st.session_state.default_minval = db.get_user_setting(username=username, param='default_minval')
     if 'default_minodds' not in st.session_state:
-        st.session_state.default_minodds = db.get_user_minodds(username=username)[0]
+        st.session_state.default_minodds = db.get_user_setting(username=username, param='default_minodds')
     if 'default_maxodds' not in st.session_state:
-        st.session_state.default_maxodds = db.get_user_maxodds(username=username)[0]
+        st.session_state.default_maxodds = db.get_user_setting(username=username, param='default_maxodds')
     if 'default_book1' not in st.session_state:
-        st.session_state.default_book1 = db.get_user_book1(username=username)[0]
+        st.session_state.default_book1 = db.get_user_setting(username=username, param='default_book1')
     if 'default_book2' not in st.session_state:
-        st.session_state.default_book2 = db.get_user_book2(username=username)[0]
+        st.session_state.default_book2 = db.get_user_setting(username=username, param='default_book2')
     if 'default_book3' not in st.session_state:
-        st.session_state.default_book3 = db.get_user_book3(username=username)[0]
+        st.session_state.default_book3 = db.get_user_setting(username=username, param='default_book3')
     if 'default_book4' not in st.session_state:
-        st.session_state.default_book4 = db.get_user_book4(username=username)[0]
+        st.session_state.default_book4 = db.get_user_setting(username=username, param='default_book4')
     if 'default_book5' not in st.session_state:
-        st.session_state.default_book5 = db.get_user_book5(username=username)[0]
+        st.session_state.default_book5 = db.get_user_setting(username=username, param='default_book5')
 
     if 'id_max' not in st.session_state:
         st.session_state.id_max = 0
@@ -134,6 +133,14 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
             st.dataframe(styled_df, column_config={"LINK": st.column_config.LinkColumn("LINK")}, hide_index=True)
 
     st.cache_data.clear()
+
+    # Create a radio button for Decimal/American odds format
+    odds_display_options = ['Decimal', 'American']
+    st.session_state.default_odds_display = st.sidebar.radio(label="Select odds format", options=odds_display_options, index=odds_display_options.index(st.session_state.default_odds_display), horizontal=True, on_change=db.change_user_odds_display, args=(username, placeholder1), key='default_odds_display')
+
+    # Create selectbox for timezone
+    timezone_options = pytz.common_timezones
+    st.session_state.default_timezone = st.sidebar.selectbox(label="Select timezone", options=timezone_options, index=timezone_options.index(st.session_state.default_timezone), on_change=db.change_user_timezone, args=(username, placeholder1), key='default_timezone_key')
 
 else:
     st.info('Your session has expired')
