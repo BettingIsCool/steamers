@@ -44,7 +44,7 @@ def append_user(data: dict):
     query = f"INSERT INTO {TABLE_USERS} (username, odds_display, timezone, default_minval, default_minodds, default_maxodds, default_book1, default_book2, default_book3, default_book4, default_book5) VALUES(:username, :odds_display, :timezone, :default_minval, :default_minodds, :default_maxodds, :default_book1, :default_book2, :default_book3, :default_book4, :default_book5)"
 
     with conn.session as session:
-        session.execute(text(query), params=dict(username=data['username'], odds_display='Decimal', timezone='Europe/London', default_minval=0.025, default_minodds=1, default_maxodds=1000, default_book1='', default_book2='', default_book3='', default_book4='', default_book5=''))
+        session.execute(text(query), params=dict(username=data['username'], default_odds_display='Decimal', default_timezone='Europe/London', default_minval=0.025, default_minodds=1, default_maxodds=1000, default_book1='', default_book2='', default_book3='', default_book4='', default_book5=''))
         session.commit()
 
 
