@@ -52,4 +52,4 @@ def get_user_data(username: str, param: str):
     :param username: The username of the user whose odds display is being retrieved.
     :return: A list of odds displays associated with the given username.
     """
-    return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()
+    return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()[0]
