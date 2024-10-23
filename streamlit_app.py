@@ -100,11 +100,10 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.sidebar.subheader(f"Welcome {username}")
     st.sidebar.write(f"Default settings")
 
-
     # update every 5 seconds
     st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
-    selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Select book(s) you wish to get bets for.')
+    selected_books = st.multiselect(label='Bookmakers', options=BOOKS.keys(), format_func=lambda x: BOOKS.get(x), help='Default bookmakers will always show up. You can add more bookmakers here.')
     selected_books = [f"'{s}'" for s in selected_books]
     selected_books = f"({','.join(selected_books)})"
 
