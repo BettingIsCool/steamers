@@ -117,7 +117,7 @@ def change_user_maxodds(username: str, placeholder: st.delta_generator.DeltaGene
         session.execute(text(query))
         session.commit()
 
-    placeholder.success('Maximum´ odds changed successfully!')
+    placeholder.success('Maximum odds changed successfully!')
     time.sleep(2)
     placeholder.empty()
     
