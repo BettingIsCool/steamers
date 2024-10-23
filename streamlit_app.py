@@ -160,8 +160,10 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
             if st.session_state.default_odds_display == 'American':
                 bets_df.ODDS = bets_df.ODDS.apply(toolkit.get_american_odds)
                 bets_df.OTB = bets_df.OTB.apply(toolkit.get_american_odds)
+                styled_df = bets_df.style.set_properties(**{'color': 'gray'}, subset=['UPDATED', 'DROP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']).set_properties(**{'color': 'red'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{0:g}'.format, 'OTB': '{0:g}'.format, 'VALUE': '{:,.2%}'.format})
+            else:
+                styled_df = bets_df.style.set_properties(**{'color': 'gray'}, subset=['UPDATED', 'DROP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']).set_properties(**{'color': 'red'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'VALUE': '{:,.2%}'.format})
 
-            styled_df = bets_df.style.set_properties(**{'color': 'gray'}, subset=['UPDATED', 'DROP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']).set_properties(**{'color': 'red'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'VALUE': '{:,.2%}'.format})
             st.dataframe(styled_df, column_config={"LINK": st.column_config.LinkColumn("LINK")}, hide_index=True)
 
     st.cache_data.clear()
