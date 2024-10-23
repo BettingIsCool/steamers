@@ -67,6 +67,8 @@ if 'users_fetched' not in st.session_state:
     st.session_state.users_fetched = True
 
 
+st.write(st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys())
+
 # Allow only ONE session per user
 # See https://discuss.streamlit.io/t/right-way-to-manage-same-user-opening-multiple-sessions/25608
 
@@ -90,7 +92,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
             bets_df = pd.DataFrame(data=bets)
 
-            st.write(st.session_state.user_dbid in USER_DOMAIN_CHANGES)
+
 
             # Change bookie domains
             #if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
