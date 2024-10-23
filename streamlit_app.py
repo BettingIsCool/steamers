@@ -89,6 +89,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         if bets:
 
             bets_df = pd.DataFrame(data=bets)
+            bets_df['book_url'].replace('.de', '.com', inplace=True)
 
             # Change bookie domains
             if st.session_state.user_dbid in USER_DOMAIN_CHANGES.keys():
