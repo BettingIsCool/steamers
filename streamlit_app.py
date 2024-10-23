@@ -118,6 +118,12 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     with col_maxodds:
         maxodds = st.slider(label='Maximum Odds', min_value=minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
 
+    with col_datefrom:
+        selected_from_date = st.date_input(label='Start date', value='today', min_value=datetime.datetime.now())
+
+    with col_dateto:
+        selected_to_date = st.date_input(label='End date', value=selected_from_date + datetime.timedelta(days=365), min_value=datetime.datetime.now(), max_value=selected_from_date + datetime.timedelta(days=365))
+
     if selected_books != '()':
 
         bets = db.get_log(bookmakers=selected_books)
