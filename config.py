@@ -224,10 +224,15 @@ TEXT_LANDING_PAGE = """
 
 🔥 **What's Hot?**
 👉 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
+
 👉 Real-Time Value Bets: Choose your favorite sports books and receive live updates on where the value lies.
+
 👉 One-Click Betting: With integrated deep links, go from notification to bet placement in a single click. Fast and furious!
+
 👉 Total Customization: Tailor your alerts by setting your minimum value threshold, preferred bookmakers, lookahead time, and more.
+
 👉 Multisport Support: Whether it's soccer ⚽, basketball 🏀, tennis 🎾, baseball ⚾️ or American football 🏈. I've got you covered.
+
 👉 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 200 bookmakers (see below).
 
 ❓**Why #ChasingSteamers**
