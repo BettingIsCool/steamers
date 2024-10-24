@@ -222,6 +222,8 @@ TEXT_LANDING_PAGE = """
 
 **Unlock the Power of Instant Betting with #ChasingSteamers Ultra Feed!**
 
+
+
 🔥 **What's Hot?**
 
 👉 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
@@ -237,11 +239,13 @@ TEXT_LANDING_PAGE = """
 👉 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 200 bookmakers (see below).
 
 
+
 ❓**Why #ChasingSteamers**
 
 👉 Efficiency: Harness the power of the efficient market hypothesis to spot and exploit mispricings before anyone else can react.
 
 👉 Simple, Yet Powerful: An intuitive dashboard gives you all the crucial info at a glance, making betting smarter, not harder.
+
 
 
 **Bookmakers Galore**

@@ -12,9 +12,6 @@ import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
-# TODO min_odds, max_odds, time_range filters
-# TODO proper database indexing
-# TODO default settings (timezone, decimal/american, default books, default min val)
 # TODO create detailed stats with overview per book
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
 # TODO add comments below table (bets for last hour, don't hot refresh, advice)
@@ -221,6 +218,14 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     # Create text input for default_book5
     st.session_state.default_book5 = st.sidebar.selectbox(label="Select default bookmaker 5", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book5), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book5, args=(username, placeholder1), key='default_book5_key')
+
+    st.write("👉 OTB (odds to beat) represents the fair odds and is the theoretical break-even point. In other words: In order to make money long-term (+ev bet) you would need to get a price that is higher than the 'odds to beat' price.")
+
+    st.write("👉 GET ON RIGHT AWAY OR LEAVE IT! If you receive the alert look the bet up at your book right away. Place the bet and you’re done. If you can't obtain OTB+ forget it and move on.")
+
+    st.write("👉 Don’t judge your bet record too early! Variance plays a huge role in sportsbetting and even samples over a few hundred bets are often meaningless if you consider the actual profits only.")
+
+    st.write("👉 The way to judge your bets is via clv (closing line value). This is an important concept to understand! I have written an article on this subject available on my homepage https://bettingiscool.com/2016/12/27/how-good-is-a-betting-tipster/")
 
 else:
     st.info('Your session has expired')
