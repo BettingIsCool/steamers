@@ -123,7 +123,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     with col_maxodds:
         if st.session_state.default_odds_display == 'American':
-            selected_maxodds_american = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=10000, value=st.session_state.default_maxodds, step=1)
+            selected_maxodds_american = st.slider(label='Maximum Odds', min_value=selected_minodds_american, max_value=10000, value=st.session_state.default_maxodds, step=1)
             selected_maxodds = toolkit.get_decimal_odds(american_odds=selected_maxodds_american)
         else:
             selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
@@ -187,7 +187,6 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.session_state.default_minval = st.sidebar.number_input("Select default minimum value threshold", min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f", on_change=db.change_user_minval, args=(username, placeholder1), key='default_minval_key', help='Enter percentage as decimal number. 5% = 0.05')
 
     # Create number input for default_minodds
-
     if st.session_state.default_odds_display == 'American':
         st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=-10000, max_value=10000, value=st.session_state.default_minodds, step=1, on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
     else:
