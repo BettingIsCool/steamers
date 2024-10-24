@@ -223,6 +223,7 @@ TEXT_LANDING_PAGE = """
 **Unlock the Power of Instant Betting with #ChasingSteamers Ultra Feed!**
 
 🔥 **What's Hot?**
+
 👉 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
 
 👉 Real-Time Value Bets: Choose your favorite sports books and receive live updates on where the value lies.
@@ -235,15 +236,23 @@ TEXT_LANDING_PAGE = """
 
 👉 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 200 bookmakers (see below).
 
+
 ❓**Why #ChasingSteamers**
+
 👉 Efficiency: Harness the power of the efficient market hypothesis to spot and exploit mispricings before anyone else can react.
+
 👉 Simple, Yet Powerful: An intuitive dashboard gives you all the crucial info at a glance, making betting smarter, not harder.
 
+
 **Bookmakers Galore**
+
 From Bet365 to Unibet, and from local favorites to global giants, we support an impressive list of over 200 bookmakers. Whether you're betting with Paddy Power or exploring odds with PokerStars, we've ensured compatibility to enhance your betting experience.
 
+
 **Ready to Chase the Steam?**
+
 Join the ranks of savvy bettors who've turned their computers into profit-making machines. With #ChasingSteamers Ultra Feed, you're not just betting; you're betting smart, fast, and with precision.
+
 
 **Click. Bet. Win. Repeat.**
 
