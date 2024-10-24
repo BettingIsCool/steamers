@@ -12,8 +12,7 @@ import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
-# TODO complete website
-# TODO add screenshot
+# TODO add +/- symbol for spread in bet_str
 # TODO complete tooltips
 # TODO create detailed stats with overview per book
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
@@ -110,7 +109,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     col_minval, col_minodds, col_maxodds, col_lookahead = st.columns([1, 1, 1, 1])
 
     with col_minval:
-        selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
+        selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
 
     with col_minodds:
         if st.session_state.default_odds_display == 'American':
@@ -160,17 +159,17 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
                 toolkit.play_notification()
 
             if st.session_state.default_odds_display == 'American':
-                bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROPPCT', 'oddstobeat': 'OTB', 'book_odds': 'ODDS', 'book_val': 'VALUE', 'book_name': 'BOOK', 'book_url': 'LINK', 'id': 'ID', 'bet_str': 'BET', 'drop_str_american': 'DROP', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'BET_ADVISED'})
+                bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROPPCT', 'oddstobeat': 'OTB', 'book_odds': 'ODDS', 'book_val': 'VALUE', 'book_name': 'BOOK', 'book_url': 'LINK', 'id': 'ID', 'bet_str': 'BET', 'drop_str_american': 'DROP', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'ALERT'})
             else:
-                bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROPPCT', 'oddstobeat': 'OTB', 'book_odds': 'ODDS', 'book_val': 'VALUE', 'book_name': 'BOOK', 'book_url': 'LINK', 'id': 'ID', 'bet_str': 'BET', 'drop_str': 'DROP', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'BET_ADVISED'})
-            bets_df = bets_df[['BET_ADVISED', 'BET', 'ODDS', 'BOOK', 'VALUE', 'DROP', 'OTB', 'LINK', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']]
+                bets_df = bets_df.rename(columns={'sport_name': 'SPORT', 'league_name': 'LEAGUE', 'runner_home': 'RUNNER_HOME', 'runner_away': 'RUNNER_AWAY', 'selection': 'SELECTION', 'market': 'MARKET', 'line': 'LINE', 'prev_odds': 'PODDS', 'curr_odds': 'CODDS', 'droppct': 'DROPPCT', 'oddstobeat': 'OTB', 'book_odds': 'ODDS', 'book_val': 'VALUE', 'book_name': 'BOOK', 'book_url': 'LINK', 'id': 'ID', 'bet_str': 'BET', 'drop_str': 'DROP', 'timestamp_utc': 'TIMESTAMP', 'starts_utc': 'STARTS', 'updated_ago': 'ALERT'})
+            bets_df = bets_df[['ALERT', 'BET', 'ODDS', 'BOOK', 'VALUE', 'DROP', 'OTB', 'LINK', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']]
 
             if st.session_state.default_odds_display == 'American':
                 bets_df.ODDS = bets_df.ODDS.apply(toolkit.get_american_odds)
                 bets_df.OTB = bets_df.OTB.apply(toolkit.get_american_odds)
-                styled_df = bets_df.style.set_properties(**{'color': 'gray'}, subset=['BET_ADVISED', 'DROP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']).set_properties(**{'color': 'red'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{0:g}'.format, 'OTB': '{0:g}'.format, 'VALUE': '{:,.2%}'.format})
+                styled_df = bets_df.style.set_properties(**{'color': 'gray'}, subset=['ALERT', 'DROP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']).set_properties(**{'color': 'red'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{0:g}'.format, 'OTB': '{0:g}'.format, 'VALUE': '{:,.2%}'.format})
             else:
-                styled_df = bets_df.style.set_properties(**{'color': 'gray'}, subset=['BET_ADVISED', 'DROP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']).set_properties(**{'color': 'red'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'VALUE': '{:,.2%}'.format})
+                styled_df = bets_df.style.set_properties(**{'color': 'gray'}, subset=['ALERT', 'DROP', 'STARTS', 'SPORT', 'LEAGUE', 'RUNNER_HOME', 'RUNNER_AWAY']).set_properties(**{'color': 'red'}, subset=['OTB']).applymap(toolkit.color_cells, subset=['VALUE']).format({'LINE': '{:g}'.format, 'PODDS': '{:,.3f}'.format, 'CODDS': '{:,.3f}'.format, 'ODDS': '{:,.3f}'.format, 'OTB': '{:,.3f}'.format, 'VALUE': '{:,.2%}'.format})
 
             st.dataframe(styled_df, column_config={"LINK": st.column_config.LinkColumn("LINK")}, hide_index=True)
 
@@ -203,7 +202,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
 
     # Create number input for default_lookahead
-    st.session_state.default_lookahead = st.sidebar.number_input("Select default lookahead (in hours)", min_value=1, max_value=500, value=st.session_state.default_lookahead, step=1, on_change=db.change_user_lookahead, args=(username, placeholder1), key='default_lookahead_key')
+    st.session_state.default_lookahead = st.sidebar.number_input("Select default lookahead (in hours)", min_value=1, max_value=500, value=st.session_state.default_lookahead, step=1, on_change=db.change_user_lookahead, args=(username, placeholder1), key='default_lookahead_key', help='Show only events that start within the next x hours.')
 
     # Create text input for default_book1
     st.session_state.default_book1 = st.sidebar.selectbox(label="Select default bookmaker 1", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book1), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book1, args=(username, placeholder1), key='default_book1_key')
@@ -220,7 +219,9 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     # Create text input for default_book5
     st.session_state.default_book5 = st.sidebar.selectbox(label="Select default bookmaker 5", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book5), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book5, args=(username, placeholder1), key='default_book5_key')
 
-    st.write("👉 OTB (odds to beat) represents the fair odds and is the theoretical break-even point. In other words: In order to make money long-term (+ev bet) you would need to get a price that is higher than the 'odds to beat' price.")
+    st.write("👉 The app updates automatically. DO NOT REFRESH YOUR BROWSER! Every refresh results in a log out.")
+
+    st.write("👉 OTB (odds to beat) represents the fair odds and is the theoretical break-even point. In other words: In order to make money long-term you would need to get a price that is higher than the 'odds to beat' price.")
 
     st.write("👉 GET ON RIGHT AWAY OR LEAVE IT! If you receive the alert look the bet up at your book right away. Place the bet and you’re done. If you can't obtain OTB+ forget it and move on.")
 
