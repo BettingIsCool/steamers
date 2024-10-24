@@ -201,7 +201,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=10000.00, value=st.session_state.default_maxodds, step=1.00, on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
     else:
         st.session_state.default_minodds = 1.00 if st.session_state.default_minodds < 1.00 else st.session_state.default_minodds
-        st.session_state.default_maxodds = 100.00 if st.session_state.default_maxodds < 100.00 else st.session_state.default_maxodds
+        st.session_state.default_maxodds = 100.00 if st.session_state.default_maxodds > 100.00 else st.session_state.default_maxodds
         st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
 
     # Create number input for default_lookahead
