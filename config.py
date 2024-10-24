@@ -286,7 +286,7 @@ List of supported bookmakers 👇
 ⭐️ Apuesta Total
 ⭐️ ATG SE
 ⭐️ Bally Bet
-⭐️ http://BC.Game
+⭐️ BC.Game
 ⭐️ Bet3000
 ⭐️ bet365
 ⭐️ bet365
@@ -342,7 +342,7 @@ List of supported bookmakers 👇
 ⭐️ DACHBET
 ⭐️ Dafabet
 ⭐️ Draftkings
-⭐️ http://Dream.bet
+⭐️ Dream.bet
 ⭐️ Duelbits
 ⭐️ ESPN Bet
 ⭐️ Esportiva Bet
@@ -427,10 +427,10 @@ List of supported bookmakers 👇
 ⭐️ SportingBet
 ⭐️ Sporting Index
 ⭐️ Sporttip
-⭐️ http://sportwetten.de
+⭐️ sportwetten.de
 ⭐️ SportyBet
 ⭐️ Spreadex
-⭐️ http://Stake.com
+⭐️ Stake.com
 ⭐️ Starcasino BE
 ⭐️ Stoiximan
 ⭐️ STS PL
@@ -471,7 +471,7 @@ List of supported bookmakers 👇
 ⭐️ WinBet BG
 ⭐️ WinBet RO
 ⭐️ Winpot MX
-⭐️ http://Winz.io
+⭐️ Winz.io
 ⭐️ WOLFBET
 ⭐️ WPlay CO
 ⭐️ YesPlay
