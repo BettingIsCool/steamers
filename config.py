@@ -220,4 +220,247 @@ TEXT_LANDING_PAGE = """
 
 #### One click. Steady. profits.
 
+**Unlock the Power of Instant Betting with #ChasingSteamers Ultra Feed!**
+
+🔥 **What's Hot?**
+👉 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
+👉 Real-Time Value Bets: Choose your favorite sports books and receive live updates on where the value lies.
+👉 One-Click Betting: With integrated deep links, go from notification to bet placement in a single click. Fast and furious!
+👉 Total Customization: Tailor your alerts by setting your minimum value threshold, preferred bookmakers, lookahead time, and more.
+👉 Multisport Support: Whether it's soccer ⚽, basketball 🏀, tennis 🎾, baseball ⚾️ or American football 🏈. I've got you covered.
+👉 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 200 bookmakers (see below).
+
+❓**Why #ChasingSteamers**
+👉 Efficiency: Harness the power of the efficient market hypothesis to spot and exploit mispricings before anyone else can react.
+👉 Simple, Yet Powerful: An intuitive dashboard gives you all the crucial info at a glance, making betting smarter, not harder.
+
+**Bookmakers Galore**
+From Bet365 to Unibet, and from local favorites to global giants, we support an impressive list of over 200 bookmakers. Whether you're betting with Paddy Power or exploring odds with PokerStars, we've ensured compatibility to enhance your betting experience.
+
+**Ready to Chase the Steam?**
+Join the ranks of savvy bettors who've turned their computers into profit-making machines. With #ChasingSteamers Ultra Feed, you're not just betting; you're betting smart, fast, and with precision.
+
+**Click. Bet. Win. Repeat.**
+
+Get started today and be at the forefront of the sports betting revolution!
+
+---
+
+Let's make every second count in the chase for the best odds. Happy betting with #ChasingSteamers!
+
+---
+
+List of supported bookmakers 👇
+
+⭐️ 10bet
+⭐️ 188BET
+⭐️ 18Bet
+⭐️ 198Bet
+⭐️ 1Bet
+⭐️ 1xBet
+⭐️ 1xBit
+⭐️ 20Bet
+⭐️ 22Bet
+⭐️ 31Bet
+⭐️ 32Red
+⭐️ 3et
+⭐️ 7Bet LT
+⭐️ Admiral AT
+⭐️ AdmiralBet RO
+⭐️ All British Casino
+⭐️ AlphaWin
+⭐️ Apuesta Total
+⭐️ ATG SE
+⭐️ Bally Bet
+⭐️ http://BC.Game
+⭐️ Bet3000
+⭐️ bet365
+⭐️ bet365
+⭐️ bet365 DE
+⭐️ Bet9ja
+⭐️ Betano
+⭐️ Bet-At-Home
+⭐️ Betcenter BE
+⭐️ Betcity NL
+⭐️ BetClic FR
+⭐️ BetClic PL
+⭐️ BetClic PT
+⭐️ BetFair Exchange
+⭐️ BetFair Sportsbook
+⭐️ Betfred
+⭐️ Betfury
+⭐️ BetiBet
+⭐️ Betika KE
+⭐️ BetISN
+⭐️ BetMGM
+⭐️ Betnacional
+⭐️ BetOnRed
+⭐️ BetParx
+⭐️ BetPlay
+⭐️ BetRivers
+⭐️ Betsafe
+⭐️ Betsafe LT
+⭐️ Betsson
+⭐️ BetUK
+⭐️ BetVictor
+⭐️ Betway
+⭐️ BetWinner
+⭐️ BFB247
+⭐️ Bingoal BE
+⭐️ Bluechip
+⭐️ Bolsa de Aposta Sportsbook
+⭐️ BookMaker EU
+⭐️ Borgata Online Sports
+⭐️ BoyleSports
+⭐️ Bpremium
+⭐️ Bwin
+⭐️ Bwin ES
+⭐️ Bwin FR
+⭐️ Bwin IT
+⭐️ Caliente MX
+⭐️ CampeonBet
+⭐️ CASHPOINT
+⭐️ Cloudbet
+⭐️ Coolbet
+⭐️ Coral
+⭐️ CrazyBuzzer
+⭐️ Cricbaba
+⭐️ DACHBET
+⭐️ Dafabet
+⭐️ Draftkings
+⭐️ http://Dream.bet
+⭐️ Duelbits
+⭐️ ESPN Bet
+⭐️ Esportiva Bet
+⭐️ Estrela Bet
+⭐️ FanDuel
+⭐️ FDJ
+⭐️ FEZbet
+⭐️ Fortebet UG
+⭐️ FreshBet
+⭐️ Fun88 UK
+⭐️ Gamebookers
+⭐️ Genybet FR
+⭐️ Goldenbet
+⭐️ GreatWin
+⭐️ Grosvenor
+⭐️ Hollywoodbets
+⭐️ INDIBET
+⭐️ Inkabet
+⭐️ Interwetten
+⭐️ IviBet
+⭐️ JackBit
+⭐️ Jacks
+⭐️ Kaiyun Sports
+⭐️ KTO
+⭐️ Ladbrokes
+⭐️ Ladbrokes DE
+⭐️ LeoVegas
+⭐️ LibraBet
+⭐️ LiliBet
+⭐️ LiveScoreBet
+⭐️ Lottoland
+⭐️ MARCAapuestas
+⭐️ MegaPari
+⭐️ MelBet
+⭐️ Merkur Bets
+⭐️ Mozzart Bet
+⭐️ MrBit RO
+⭐️ MrGreen
+⭐️ Mr. Jack
+⭐️ MyStake
+⭐️ N1Bet
+⭐️ Napoleon Sports BE
+⭐️ NetBet
+⭐️ NetBet FR
+⭐️ Nextbet
+⭐️ Ninecasino
+⭐️ NordicBet
+⭐️ OddSet
+⭐️ OdiBets
+⭐️ Paddy Power
+⭐️ PAF
+⭐️ PAGBET
+⭐️ PariMatch UK
+⭐️ PremiumBet77
+⭐️ Pix Bet
+⭐️ PMU
+⭐️ PointsBet
+⭐️ PokerStars
+⭐️ PokerStars ES
+⭐️ PokerStars FR
+⭐️ PokerStars IT
+⭐️ PokerStars RO
+⭐️ PokerStars UK
+⭐️ Powbet
+⭐️ Qbet
+⭐️ QuickWin
+⭐️ Rabona
+⭐️ RajBet
+⭐️ RocketPlay
+⭐️ Rollbit
+⭐️ Rolletto
+⭐️ Roobet
+⭐️ Rushbet CO
+⭐️ SBOBET
+⭐️ SharpBet
+⭐️ SingBet
+⭐️ Sisal IT
+⭐️ SkyBet
+⭐️ 888Sport
+⭐️ 888Sport IT
+⭐️ Sportaza
+⭐️ SportingBet
+⭐️ Sporting Index
+⭐️ Sporttip
+⭐️ http://sportwetten.de
+⭐️ SportyBet
+⭐️ Spreadex
+⭐️ http://Stake.com
+⭐️ Starcasino BE
+⭐️ Stoiximan
+⭐️ STS PL
+⭐️ SugarHouse
+⭐️ Sultanbet
+⭐️ Superbet
+⭐️ Svenska Spel
+⭐️ Tab AU
+⭐️ TABtouch
+⭐️ theScore
+⭐️ Tipico DE
+⭐️ TippmixPRO
+⭐️ TipTorro
+⭐️ tipwin
+⭐️ Unibet
+⭐️ Unibet BE
+⭐️ Unibet UK
+⭐️ Unibet AU
+⭐️ Unibet DK
+⭐️ Unibet ES
+⭐️ Unibet FR
+⭐️ Unibet IT
+⭐️ Unibet NL
+⭐️ Unibet RO
+⭐️ Unibet SE
+⭐️ Vave
+⭐️ Vbet
+⭐️ Vertex
+⭐️ Virginbet
+⭐️ Vistabet
+⭐️ Wazamba
+⭐️ WELTBET
+⭐️ Wettarena
+⭐️ WilliamHill
+⭐️ Winamax DE
+⭐️ Winamax ES
+⭐️ Winamax FR
+⭐️ WinBet BG
+⭐️ WinBet RO
+⭐️ Winpot MX
+⭐️ http://Winz.io
+⭐️ WOLFBET
+⭐️ WPlay CO
+⭐️ YesPlay
+⭐️ ZEbet FR
+
 """
