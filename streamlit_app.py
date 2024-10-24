@@ -115,16 +115,23 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
 
     with col_minodds:
-        selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
+        if st.session_state.default_odds_display == 'American':
+            selected_minodds_american = st.slider(label='Minimum Odds', min_value=-10000, max_value=10000, value=st.session_state.default_minodds, step=1)
+            selected_minodds = toolkit.get_decimal_odds(american_odds=selected_minodds_american)
+        else:
+            selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
 
     with col_maxodds:
-        selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
+        if st.session_state.default_odds_display == 'American':
+            selected_maxodds_american = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=10000, value=st.session_state.default_maxodds, step=1)
+            selected_maxodds = toolkit.get_decimal_odds(american_odds=selected_maxodds_american)
+        else:
+            selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
 
     with col_lookahead:
         selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=st.session_state.default_lookahead, step=1, help='Show only events that start within the next x hours.')
 
     if selected_books != '()':
-
         bets = db.get_log(bookmakers=selected_books, minval=selected_minval, minodds=selected_minodds, maxodds=selected_maxodds, lookahead=selected_lookahead)
 
         if bets:
@@ -180,10 +187,17 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.session_state.default_minval = st.sidebar.number_input("Select default minimum value threshold", min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f", on_change=db.change_user_minval, args=(username, placeholder1), key='default_minval_key', help='Enter percentage as decimal number. 5% = 0.05')
 
     # Create number input for default_minodds
-    st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f", on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
+
+    if st.session_state.default_odds_display == 'American':
+        st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=-10000, max_value=10000, value=st.session_state.default_minodds, step=1, on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
+    else:
+        st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f", on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
 
     # Create number input for default_maxodds
-    st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
+    if st.session_state.default_odds_display == 'American':
+        st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=10000, value=st.session_state.default_maxodds, step=1, on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
+    else:
+        st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
 
     # Create number input for default_lookahead
     st.session_state.default_lookahead = st.sidebar.number_input("Select default lookahead (in hours)", min_value=1, max_value=500, value=st.session_state.default_lookahead, step=1, on_change=db.change_user_lookahead, args=(username, placeholder1), key='default_lookahead_key')
