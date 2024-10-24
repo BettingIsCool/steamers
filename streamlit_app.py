@@ -117,14 +117,14 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.write(st.session_state.default_minodds)
     with col_minodds:
         if st.session_state.default_odds_display == 'American':
-            selected_minodds_american = st.slider(label='Minimum Odds', min_value=-10000, max_value=10000, value=st.session_state.default_minodds, step=1)
+            selected_minodds_american = st.slider(label='Minimum Odds', min_value=-10000.00, max_value=10000.00, value=st.session_state.default_minodds, step=1.00)
             selected_minodds = toolkit.get_decimal_odds(american_odds=selected_minodds_american)
         else:
             selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f")
 
     with col_maxodds:
         if st.session_state.default_odds_display == 'American':
-            selected_maxodds_american = st.slider(label='Maximum Odds', min_value=selected_minodds_american, max_value=10000, value=st.session_state.default_maxodds, step=1)
+            selected_maxodds_american = st.slider(label='Maximum Odds', min_value=selected_minodds_american, max_value=10000.00, value=st.session_state.default_maxodds, step=1.00)
             selected_maxodds = toolkit.get_decimal_odds(american_odds=selected_maxodds_american)
         else:
             selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f")
@@ -189,13 +189,13 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     # Create number input for default_minodds
     if st.session_state.default_odds_display == 'American':
-        st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=-10000, max_value=10000, value=st.session_state.default_minodds, step=1, on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
+        st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=-10000.00, max_value=10000.00, value=st.session_state.default_minodds, step=1.00, on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
     else:
         st.session_state.default_minodds = st.sidebar.number_input("Select default minimum odds", min_value=1.00, max_value=10.00, value=st.session_state.default_minodds, step=0.05, format="%0.2f", on_change=db.change_user_minodds, args=(username, placeholder1), key='default_minodds_key')
 
     # Create number input for default_maxodds
     if st.session_state.default_odds_display == 'American':
-        st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=10000, value=st.session_state.default_maxodds, step=1, on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
+        st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=10000.00, value=st.session_state.default_maxodds, step=1.00, on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
     else:
         st.session_state.default_maxodds = st.sidebar.number_input("Select default maximum odds", min_value=st.session_state.default_minodds, max_value=100.00, value=st.session_state.default_maxodds, step=0.05, format="%0.2f", on_change=db.change_user_maxodds, args=(username, placeholder1), key='default_maxodds_key')
 
