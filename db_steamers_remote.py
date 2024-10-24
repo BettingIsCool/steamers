@@ -14,7 +14,7 @@ conn = st.connection('steamers', type='sql')
 @st.cache_data()
 def get_log(bookmakers: str, minval: float, minodds: float, maxodds: float, lookahead: int):
 
-    return conn.query(f"SELECT starts, sport_name, league_name, runner_home, runner_away, selection, market, line, prev_odds, curr_odds, droppct, oddstobeat, book_odds, book_val, book_name, book_url, timestamp, id, bet_str, timestamp_utc, starts_utc, updated_ago, drop_str FROM {TABLE_LOG} WHERE book_slug IN {bookmakers} AND book_val >= {minval} AND book_odds >= {minodds} AND book_odds <= {maxodds} AND TIMESTAMPDIFF(HOUR,NOW(),starts_utc) < {lookahead} ORDER BY timestamp_utc DESC LIMIT 25").to_dict('records')
+    return conn.query(f"SELECT starts, sport_name, league_name, runner_home, runner_away, selection, market, line, prev_odds, curr_odds, droppct, oddstobeat, book_odds, book_val, book_name, book_url, timestamp, id, bet_str, timestamp_utc, starts_utc, updated_ago, drop_str, drop_str_american FROM {TABLE_LOG} WHERE book_slug IN {bookmakers} AND book_val >= {minval} AND book_odds >= {minodds} AND book_odds <= {maxodds} AND TIMESTAMPDIFF(HOUR,NOW(),starts_utc) < {lookahead} ORDER BY timestamp_utc DESC LIMIT 25").to_dict('records')
 
 
 def get_users():
