@@ -114,6 +114,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     with col_minval:
         selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.default_minval, step=0.005, format="%0.3f")
 
+    st.write(st.session_state.default_minodds)
     with col_minodds:
         if st.session_state.default_odds_display == 'American':
             selected_minodds_american = st.slider(label='Minimum Odds', min_value=-10000, max_value=10000, value=st.session_state.default_minodds, step=1)
