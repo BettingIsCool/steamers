@@ -2,6 +2,7 @@ TABLE_LOG, TABLE_USERS = 'log', 'users'
 
 USER_DOMAIN_CHANGES = dict()
 USER_DOMAIN_CHANGES.update({8: {'interwetten.de': 'interwetten.com', 'tipico.de': 'tipico.com'}})
+USER_DOMAIN_CHANGES.update({11: {'ladbrokes.com': 'ladbrokes.com.au'}})
 
 BOOKS = dict()
 BOOKS.update({'10bet': '10bet'})
@@ -216,11 +217,7 @@ BOOKS.update({'zebet.fr': 'ZEbet FR'})
 
 TEXT_LANDING_PAGE = """
 
-## **The #ChasingSteamers Ultra Feed**
-
-#### One click. Steady. profits.
-
-**Unlock the Power of Instant Betting with #ChasingSteamers Ultra Feed!**
+## **ChasingSteamers. One click. Steady profits.**
 
 
 
