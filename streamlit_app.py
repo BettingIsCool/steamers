@@ -225,7 +225,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     st.write("👉 Don’t judge your bet record too early! Variance plays a huge role in sportsbetting and even samples over a few hundred bets are often meaningless if you consider the actual profits only.")
 
-    st.write("👉 The way to judge your bets is via clv (closing line value). This is an important concept to understand! I have written an article on this subject available on my homepage https://bettingiscool.com/2016/12/27/how-good-is-a-betting-tipster/")
+    st.write("👉 The way to judge your bets is via clv (closing line value). This is an important concept to understand! There is a 2-part video series on this subject: Part I: https://youtube.com/watch?v=-uLJUhbFD_U, Part II: https://youtube.com/watch?v=MZCeHiywKvs")
 
 else:
     st.info('Your session has expired')
