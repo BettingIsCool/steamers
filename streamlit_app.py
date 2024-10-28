@@ -1,3 +1,4 @@
+import time
 import pytz
 import toolkit
 import streamlit as st
@@ -12,13 +13,15 @@ import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
-# TODO add +/- symbol for spread in bet_str
-# TODO complete tooltips
 # TODO create detailed stats with overview per book
+# TODO send log to philipp
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
 # TODO option to add to Track-A-Bet on the fly
 # TODO add media
 # TODO major refactoring
+# TODO Bad message format - Tried to use SessionInfo before it was initialized
+# TODO replace url with 'Link': https://discuss.streamlit.io/t/st-data-editor-linkcolumn-with-different-label-and-url/45757
+# TODO https://www.restack.io/docs/streamlit-knowledge-streamlit-bad-message-format-fix
 
 placeholder1 = st.empty()
 
@@ -38,9 +41,9 @@ if 'display_landing_page_text' not in st.session_state:
 from st_paywall import add_auth
 add_auth(required=True)
 
+# Maybe a short delay helps to avoid "Bad message format - Tried to use SessionInfo before it was initialized"
+time.sleep(0.25)
 username = st.session_state.email
-
-st.write()
 
 placeholder1.empty()
 
@@ -60,6 +63,7 @@ if 'users_fetched' not in st.session_state:
         aux_active_session = toolkit.get_active_session(st.session_state.user_id)
 
     st.session_state.user_dbid = db.get_user_dbid(username=username)[0]
+    st.session_state.telegram_user_id = db.get_telegram_user_id(username=username)[0]
     st.session_state.users_fetched = True
 
 
@@ -97,8 +101,14 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     # Welcome message in the sidebar
     st.sidebar.subheader(f"Welcome {username}")
-    st.sidebar.write(f"Default settings")
 
+    if st.session_state.telegram_user_id is not None:
+
+        #st.sidebar.link_button(label='Connect Telegram', url='https://t.me/psp_ultra_bot', on_click=toolkit.open_page(url='https://t.me/psp_ultra_bot'), help='Hit this button to receive telegram alerts.', type='primary')
+        st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
+        st.session_state.telegram_user_id = db.get_telegram_user_id(username=username)[0]
+
+    st.sidebar.subheader(f"Default settings")
     # update every 5 seconds
     st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
@@ -218,6 +228,8 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
 
     # Create text input for default_book5
     st.session_state.default_book5 = st.sidebar.selectbox(label="Select default bookmaker 5", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book5), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book5, args=(username, placeholder1), key='default_book5_key')
+
+    st.write("👉 ATTENTION TELEGRAM USERS! Default settings (left sidebar) will be applied to your telegram alerts. The above filters won't have an effect on your telegram alerts.")
 
     st.write("👉 The app updates automatically. DO NOT REFRESH YOUR BROWSER! Every refresh results in a log out.")
 

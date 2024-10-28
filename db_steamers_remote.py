@@ -30,6 +30,20 @@ def get_user_dbid(username: str):
     return conn.query(f"SELECT id FROM {TABLE_USERS} WHERE username = '{username}'")['id'].tolist()
 
 
+def set_telegram_button_pressed(username: str):
+
+    query = f"UPDATE {TABLE_USERS} SET telegram_button_pressed = '{datetime.now()}' WHERE username = '{username}'"
+
+    with conn.session as session:
+        session.execute(text(query))
+        session.commit()
+
+
+def get_telegram_user_id(username: str):
+
+    return conn.query(f"SELECT telegram_user_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_user_id'].tolist()
+
+
 def append_user(data: dict):
     """
     :param data: Dictionary containing user data with the key 'username'.

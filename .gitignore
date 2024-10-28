@@ -22,3 +22,14 @@
 /_scan_ultra_steamers (totals).py
 /db_opapi.py
 /tools.py
+/_fetch_user_id.py
+/_send_telegram_bets.py
+/api_telegram.py
+/replies.txt
+/feature_comparison_chart.xlsx
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/screenshot.png
+/.idea/streamlit.steamers_ultra.iml

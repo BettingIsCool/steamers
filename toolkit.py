@@ -1,5 +1,6 @@
 import base64
 import streamlit as st
+import db_steamers_remote
 
 
 def play_notification():
@@ -63,3 +64,10 @@ def get_decimal_odds(american_odds: int):
     :rtype: float
     """
     return american_odds / 100 + 1 if american_odds >= 0 else - 100 / american_odds + 1
+
+
+def redirect_button():
+    url = 'https://t.me/psp_ultra_bot'
+
+    st.sidebar.markdown(f'''<a href={url}><button style="background-color:Red;">Click here to connect! Link will expire in 1 minute.</button></a>''', unsafe_allow_html=True)
+    db_steamers_remote.set_telegram_button_pressed(username=st.session_state.email)
