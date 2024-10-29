@@ -13,15 +13,16 @@ import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
+# TODO complete tooltips
+# TODO Remove user from database if sub cancelled (check subscription via strip api)
+# TODO Fitzdares/bet600/fafabet/betgoodwin
 # TODO create detailed stats with overview per book
-# TODO send log to philipp
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
 # TODO option to add to Track-A-Bet on the fly
 # TODO add media
 # TODO major refactoring
-# TODO Bad message format - Tried to use SessionInfo before it was initialized
+# TODO Bad message format - Tried to use SessionInfo before it was initialized, see: https://www.restack.io/docs/streamlit-knowledge-streamlit-bad-message-format-fix
 # TODO replace url with 'Link': https://discuss.streamlit.io/t/st-data-editor-linkcolumn-with-different-label-and-url/45757
-# TODO https://www.restack.io/docs/streamlit-knowledge-streamlit-bad-message-format-fix
 
 placeholder1 = st.empty()
 
@@ -240,6 +241,8 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     st.write("👉 Don’t judge your bet record too early! Variance plays a huge role in sportsbetting and even samples over a few hundred bets are often meaningless if you consider the actual profits only.")
 
     st.write("👉 The way to judge your bets is via clv (closing line value). This is an important concept to understand! There is a 2-part video series on this subject: Part I: https://youtube.com/watch?v=-uLJUhbFD_U, Part II: https://youtube.com/watch?v=MZCeHiywKvs")
+
+    st.write("👉 Annual membership available if paid with crypto. Please get in touch at contact@bettingiscool.com")
 
 else:
     st.info('Your session has expired')
