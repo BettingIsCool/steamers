@@ -22,7 +22,7 @@
 /_scan_ultra_steamers (totals).py
 /db_opapi.py
 /tools.py
-/_fetch_user_id.py
+/_fetch_telegram_user_id.py
 /_send_telegram_bets.py
 /api_telegram.py
 /replies.txt

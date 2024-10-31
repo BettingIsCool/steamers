@@ -14,8 +14,10 @@ import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
 # TODO complete tooltips
+# TODO update telegram bot description/intro
 # TODO Remove user from database if sub cancelled (check subscription via strip api)
-# TODO Fitzdares/bet600/fafabet/betgoodwin
+# TODO inkabet links not working
+# TODO Fitzdares/bet600/fafabet/betgoodwin, Smarkets and SBK, ladbrokes AU
 # TODO create detailed stats with overview per book
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
 # TODO option to add to Track-A-Bet on the fly
@@ -103,7 +105,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     # Welcome message in the sidebar
     st.sidebar.subheader(f"Welcome {username}")
 
-    if st.session_state.telegram_user_id is None:
+    if st.session_state.telegram_user_id is not None:
 
         #st.sidebar.link_button(label='Connect Telegram', url='https://t.me/psp_ultra_bot', on_click=toolkit.open_page(url='https://t.me/psp_ultra_bot'), help='Hit this button to receive telegram alerts.', type='primary')
         st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
