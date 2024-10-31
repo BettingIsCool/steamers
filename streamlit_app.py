@@ -107,7 +107,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
         st.session_state.telegram_user_id = db.get_telegram_user_id(username=username)[0]
 
-    st.sidebar.subheader(f"Default settings", help='These are our standard settings every time you log in. These are also the settings applied to your telegram alerts.')
+    st.sidebar.subheader(f"Default settings", help='Your standard settings every time you log in. These are also the settings applied to your telegram alerts.')
     # update every 5 seconds
     st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 
