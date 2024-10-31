@@ -227,7 +227,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     # Create text input for default_book5
     st.session_state.default_book5 = st.sidebar.selectbox(label="Select default bookmaker 5", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book5), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book5, args=(username, placeholder1), key='default_book5_key')
 
-    st.write("‼️The bot will send instant alerts for significant price drops at sharp bookmakers. Such drops will yield opportunities at (soft) bookmakers who are too slow adjusting their prices. Once the alert hits the app/telegram place the bet immediately using the included bookmaker links. Each alert has a minimum price included (= otb). Don't bet below this price! If the odds have fallen below otb, skip the bet and move on.")
+    st.write("⚠️️The bot will send instant alerts for significant price drops at sharp bookmakers. Such drops will yield opportunities at (soft) bookmakers who are too slow adjusting their prices. Once the alert hits the app/telegram place the bet immediately using the included bookmaker links. Each alert has a minimum price included (= otb). Don't bet below this price! If the odds have fallen below otb, skip the bet and move on.")
 
     st.write("⚠️ ATTENTION TELEGRAM USERS! Default settings (left sidebar) will be applied to your telegram alerts. The above filters won't have an effect on your telegram alerts.")
 
