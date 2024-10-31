@@ -14,12 +14,9 @@ import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
 # TODO complete tooltips
-# TODO update telegram bot description/intro
 # TODO Remove user from database if sub cancelled (check subscription via strip api)
 # TODO Fitzdares/bet600/fafabet/betgoodwin, Smarkets and SBK, ladbrokes AU
-# TODO create detailed stats with overview per book
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
-# TODO option to add to Track-A-Bet on the fly
 # TODO add media
 # TODO major refactoring
 # TODO Bad message format - Tried to use SessionInfo before it was initialized, see: https://www.restack.io/docs/streamlit-knowledge-streamlit-bad-message-format-fix
@@ -110,7 +107,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
         st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
         st.session_state.telegram_user_id = db.get_telegram_user_id(username=username)[0]
 
-    st.sidebar.subheader(f"Default settings")
+    st.sidebar.subheader(f"Default settings", help='These are our standard settings every time you log in. These are also the settings applied to your telegram alerts.')
     # update every 5 seconds
     st_autorefresh(interval=10 * 1000, debounce=True, key="dataframerefresh")
 

@@ -33,4 +33,9 @@
 /.idea/inspectionProfiles/Project_Default.xml
 /screenshot.png
 /.idea/streamlit.steamers_ultra.iml
-/+settle_bets.py
+/+settle_and_export_bets.py
+/+export_bets_to_spreadsheet.py
+/google_api.py
+/spreadsheet.py
+/spreadsheet_api_key.json
+/+settle_and_export_bets.py
