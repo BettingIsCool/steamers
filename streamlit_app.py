@@ -16,7 +16,6 @@ from streamlit_autorefresh import st_autorefresh
 # TODO complete tooltips
 # TODO update telegram bot description/intro
 # TODO Remove user from database if sub cancelled (check subscription via strip api)
-# TODO inkabet links not working
 # TODO Fitzdares/bet600/fafabet/betgoodwin, Smarkets and SBK, ladbrokes AU
 # TODO create detailed stats with overview per book
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)

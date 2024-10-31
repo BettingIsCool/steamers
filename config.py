@@ -4,6 +4,7 @@ USER_DOMAIN_CHANGES = dict()
 USER_DOMAIN_CHANGES.update({8: {'interwetten.de': 'interwetten.com', 'tipico.de': 'tipico.com', 'ladbrokes.com': 'ladbrokes.com.au'}})
 USER_DOMAIN_CHANGES.update({26: {'ladbrokes.com': 'ladbrokes.com.au'}})
 USER_DOMAIN_CHANGES.update({23: {'bet365.com': 'bet365.pe'}})
+USER_DOMAIN_CHANGES.update({35: {'bet365.com': 'bet365.com.au'}})
 USER_DOMAIN_CHANGES.update({37: {'bet365.com': 'bet365.com.au'}})
 
 BOOKS = dict()
