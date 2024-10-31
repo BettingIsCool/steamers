@@ -105,7 +105,7 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     # Welcome message in the sidebar
     st.sidebar.subheader(f"Welcome {username}")
 
-    if st.session_state.telegram_user_id is not None:
+    if st.session_state.telegram_user_id is None:
 
         #st.sidebar.link_button(label='Connect Telegram', url='https://t.me/psp_ultra_bot', on_click=toolkit.open_page(url='https://t.me/psp_ultra_bot'), help='Hit this button to receive telegram alerts.', type='primary')
         st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
