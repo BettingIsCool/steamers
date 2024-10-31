@@ -13,7 +13,6 @@ import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
-# TODO complete tooltips
 # TODO Remove user from database if sub cancelled (check subscription via strip api)
 # TODO Fitzdares/bet600/fafabet/betgoodwin, Smarkets and SBK, ladbrokes AU
 # TODO retrieve odds from all bookmakers (update list of bookmakers every day)
@@ -228,19 +227,21 @@ if st.session_state.session_id == toolkit.get_active_session(st.session_state.us
     # Create text input for default_book5
     st.session_state.default_book5 = st.sidebar.selectbox(label="Select default bookmaker 5", options=BOOKS.keys(), index=list(BOOKS.keys()).index(st.session_state.default_book5), format_func=lambda x: BOOKS.get(x), on_change=db.change_user_book5, args=(username, placeholder1), key='default_book5_key')
 
-    st.write("👉 ATTENTION TELEGRAM USERS! Default settings (left sidebar) will be applied to your telegram alerts. The above filters won't have an effect on your telegram alerts.")
+    st.write("‼️The bot will send instant alerts for significant price drops at sharp bookmakers. Such drops will yield opportunities at (soft) bookmakers who are too slow adjusting their prices. Once the alert hits the app/telegram place the bet immediately using the included bookmaker links. Each alert has a minimum price included (= otb). Don't bet below this price! If the odds have fallen below otb, skip the bet and move on.")
 
-    st.write("👉 The app updates automatically. DO NOT REFRESH YOUR BROWSER! Every refresh results in a log out.")
+    st.write("⚠️ ATTENTION TELEGRAM USERS! Default settings (left sidebar) will be applied to your telegram alerts. The above filters won't have an effect on your telegram alerts.")
 
-    st.write("👉 OTB (odds to beat) represents the fair odds and is the theoretical break-even point. In other words: In order to make money long-term you would need to get a price that is higher than the 'odds to beat' price.")
+    st.write("️⚠️ The app updates automatically. DO NOT REFRESH YOUR BROWSER! Every refresh results in a log out.")
 
-    st.write("👉 GET ON RIGHT AWAY OR LEAVE IT! If you receive the alert look the bet up at your book right away. Place the bet and you’re done. If you can't obtain OTB+ forget it and move on.")
+    st.write("👉 OTB (odds to beat) represents the fair odds and is the theoretical break-even point. In other words: In order to make money long-term you need to get a price higher than the 'odds to beat' price.")
 
     st.write("👉 Don’t judge your bet record too early! Variance plays a huge role in sportsbetting and even samples over a few hundred bets are often meaningless if you consider the actual profits only.")
 
     st.write("👉 The way to judge your bets is via clv (closing line value). This is an important concept to understand! There is a 2-part video series on this subject: Part I: https://youtube.com/watch?v=-uLJUhbFD_U, Part II: https://youtube.com/watch?v=MZCeHiywKvs")
 
     st.write("👉 Annual membership available if paid with crypto. Please get in touch at contact@bettingiscool.com")
+
+    st.write("💰 Good luck with your betting!")
 
 else:
     st.info('Your session has expired')
