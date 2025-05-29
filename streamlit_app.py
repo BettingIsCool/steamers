@@ -23,12 +23,13 @@ from streamlit_autorefresh import st_autorefresh
 # TODO replace url with 'Link': https://discuss.streamlit.io/t/st-data-editor-linkcolumn-with-different-label-and-url/45757
 
 placeholder1 = st.empty()
+placeholder2 = st.empty()
 
 if 'display_landing_page_text' not in st.session_state:
 
     # Display landing page (pre login)
     placeholder1.markdown(TEXT_LANDING_PAGE)
-    st.image('chart.png', use_container_width='auto')
+    placeholder2.image('chart.png', use_container_width='auto')
     st.session_state.display_landing_page_text = True
 
 # Add google authentication (only users with a valid stripe subscription can log in)
@@ -46,6 +47,7 @@ time.sleep(0.25)
 username = st.session_state.email
 
 placeholder1.empty()
+placeholder2.empty()
 
 # Check if username is in database, otherwise append the user
 if 'users_fetched' not in st.session_state:
