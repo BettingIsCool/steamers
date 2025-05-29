@@ -6,7 +6,7 @@ st.set_page_config(page_title="ChasingSteamers by BettingIsCool", page_icon="♨
 import time
 import pytz
 import toolkit
-from config import BOOKS, TEXT_LANDING_PAGE, USER_DOMAIN_CHANGES
+from config import BOOKS, TEXT_LANDING_PAGE
 
 
 import datetime
