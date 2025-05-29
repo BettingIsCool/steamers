@@ -951,5 +951,3 @@ TEXT_LANDING_PAGE = """
 
 """
 
-st.image('chart.png', use_container_width='auto')
-
