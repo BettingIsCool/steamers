@@ -951,5 +951,5 @@ TEXT_LANDING_PAGE = """
 
 """
 
-st.image('chart.png', caption='Your caption here', use_column_width=True)
+st.image('chart.png', use_container_width='auto')
 
