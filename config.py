@@ -1,5 +1,3 @@
-import streamlit as st
-
 TABLE_USERS = 'users'
 
 BOOKS = set()
@@ -945,9 +943,12 @@ TEXT_LANDING_PAGE = """
 
 🔥 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 900 bookmakers.
 
+🔥 Alerts delivered via telegram 24/7!
+
 ❓**Not sure how you can take advantage?**
 
 👉 Then I recommend heading over to my website for a detailed description https://bettingiscool.com/pinnacle-steamers/
 
+️🐦 Follow me on X https://x.com/BettingIsCool for regular updates and betting related content!
 """
 
