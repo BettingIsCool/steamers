@@ -929,20 +929,18 @@ BOOKS.add('Zenit (Win)')
 
 TEXT_LANDING_PAGE = """
 
-## **#ChasingSteamers Personal. Your personalized dropping odds feed.**
+### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
 
 
-🔥 **What's Hot?**
+🔥 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
 
-👉 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
+🔥 One-Click Betting: With integrated deep links, go from notification to bet placement in a single click. Fast and furious!
 
-👉 One-Click Betting: With integrated deep links, go from notification to bet placement in a single click. Fast and furious!
+🔥 Total Customization: Tailor your alerts by setting your minimum value threshold, preferred bookmakers, lookahead time, and more.
 
-👉 Total Customization: Tailor your alerts by setting your minimum value threshold, preferred bookmakers, lookahead time, and more.
+🔥 Multisport Support: Whether it's soccer ⚽, basketball 🏀, tennis 🎾, baseball ⚾️ or American football 🏈. I've got you covered.
 
-👉 Multisport Support: Whether it's soccer ⚽, basketball 🏀, tennis 🎾, baseball ⚾️ or American football 🏈. I've got you covered.
-
-👉 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 900 bookmakers.
+🔥 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 900 bookmakers.
 
 
 ❓**Not sure what #ChasingSteamers actually is and how you can profit from it?**
