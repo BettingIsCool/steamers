@@ -7,4 +7,4 @@ SQLAlchemy
 emoji-country-flag
 streamlit_autorefresh
 mysql-connector-python
-git+https://github.com/bettingiscool/st-paywall_steamers.git@main
+git+https://github.com/bettingiscool/st-paywall_fork.git@main
