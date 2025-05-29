@@ -932,7 +932,6 @@ TEXT_LANDING_PAGE = """
 ## **#ChasingSteamers Personal. Your personalized dropping odds feed.**
 
 
-
 🔥 **What's Hot?**
 
 👉 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
