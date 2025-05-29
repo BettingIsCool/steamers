@@ -6,7 +6,7 @@ from datetime import datetime
 
 import streamlit as st
 from sqlalchemy import text
-from config import TABLE_LOG, TABLE_USERS
+from config import TABLE_USERS
 
 conn = st.connection('steamers', type='sql')
 
