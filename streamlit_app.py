@@ -1,11 +1,11 @@
-import time
-import pytz
-import toolkit
 import streamlit as st
 
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
 st.set_page_config(page_title="ChasingSteamers by BettingIsCool", page_icon="♨️", layout="wide", initial_sidebar_state="expanded")
 
+import time
+import pytz
+import toolkit
 from config import BOOKS, TEXT_LANDING_PAGE, USER_DOMAIN_CHANGES
 
 
