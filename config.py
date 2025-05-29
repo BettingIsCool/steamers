@@ -1,6 +1,6 @@
 TABLE_USERS = 'users'
 
-BOOKS = dict()
+BOOKS = set()
 BOOKS.add('10Bet')
 BOOKS.add('10Bet (SE)')
 BOOKS.add('10Bet (ZA)')
