@@ -24,10 +24,10 @@ def append_user(data: dict):
     :param data: Dictionary containing user data with the key 'username'.
     :return: None
     """
-    query = f"INSERT INTO {TABLE_USERS} (username, minval, minodds, maxodds, lookahead) VALUES(:username, :minval, :minodds, :maxodds, :lookahead)"
+    query = f"INSERT INTO {TABLE_USERS} (username, minval, minodds, maxodds, lookahead, active_books) VALUES(:username, :minval, :minodds, :maxodds, :lookahead, :active_books)"
 
     with conn.session as session:
-        session.execute(text(query), params=dict(username=data['username'], minval=0.10, minodds=1.01, maxodds=100.00, lookahead=8))
+        session.execute(text(query), params=dict(username=data['username'], minval=0.10, minodds=1.01, maxodds=100.00, lookahead=8, active_books=0))
         session.commit()
 
 

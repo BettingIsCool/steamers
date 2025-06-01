@@ -62,6 +62,10 @@ db.change_user_setting(username=username, param='maxodds', value=selected_maxodd
 selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=db.get_user_setting(username=username, param='lookahead'), step=1, help='Show only events that start within the next x hours.')
 db.change_user_setting(username=username, param='lookahead', value=selected_lookahead)
 
+st.subheader(f"Purchase bookmaker deeplinks")
+active_bookmakers = st.selectbox(label="Active bookmakers", options=[0, 1, 2, 3], index=db.get_user_setting(username=username, param='active_books'))
+
+
 
 
 
