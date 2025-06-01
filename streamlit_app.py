@@ -71,6 +71,8 @@ if active_bookmakers != db.get_user_setting(username=username, param='active_boo
         st.write('Purchase one bookmaker for €79.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
     elif active_bookmakers == 3:
         st.write('Purchase one bookmaker for €99.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
+    elif active_bookmakers == 0:
+        st.write('Cancel your bookmaker subscription', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
 
 #         st.session_state.user_id = username
 #         st.session_state.session_id = username + '_' + str(datetime.datetime.now())
