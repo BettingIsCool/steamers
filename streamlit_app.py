@@ -68,13 +68,13 @@ active_bookmakers = st.selectbox(label="Active bookmakers", options=[0, 1, 2, 3]
 if active_bookmakers != db.get_user_setting(username=username, param='active_books'):
     if active_bookmakers == 1:
         st.write('Purchase one bookmaker for €49.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
-        stripe_api.create_monthly_subscription_by_email(email=username, price_id='price_1RVJBcHE7Mhw1WGhKn70PRJD')
+        stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGhKn70PRJD')
     elif active_bookmakers == 2:
         st.write('Purchase one bookmaker for €79.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
-        stripe_api.create_monthly_subscription_by_email(email=username, price_id='price_1RVJBcHE7Mhw1WGhddGdhhSN')
+        stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGhddGdhhSN')
     elif active_bookmakers == 3:
         st.write('Purchase one bookmaker for €99.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
-        stripe_api.create_monthly_subscription_by_email(email=username, price_id='price_1RVJBcHE7Mhw1WGh3CQUKQYP')
+        stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGh3CQUKQYP')
     elif active_bookmakers == 0:
         st.write('Cancel your bookmaker subscription', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
 
