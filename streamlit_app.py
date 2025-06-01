@@ -71,8 +71,6 @@ if active_bookmakers != db.get_user_setting(username=username, param='active_boo
         if st.button("Proceed to Payment"):
             session = stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGhKn70PRJD')
             if session:
-                st.write(session)
-                st.session_state["checkout_session_id"] = session.id
                 st.markdown(f"[Pay €{total_cost:.2f} Now]({session.url})")
     elif active_bookmakers == 2:
         st.write('Purchase one bookmaker for €79.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')

@@ -33,7 +33,7 @@ def create_checkout_session_for_subscription(email: str, price_id: str) -> dict:
         session = stripe.checkout.Session.create(
             customer=customer.id,
             payment_method_types=['card', 'paypal'],
-            success_url = 'https://steamers.streamlit.app/',
+            success_url='https://steamers.streamlit.app/',
             cancel_url='https://steamers.streamlit.app/',
             line_items=[
                 {
