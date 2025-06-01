@@ -48,8 +48,6 @@ def get_user_setting(username: str, param: str):
 
 def change_user_setting(username: str, param: str, value: (float, int)):
 
-    st.session_state.default_minval = st.session_state.default_minval_key
-
     query = f"UPDATE {TABLE_USERS} SET {param} = {value} WHERE username = '{username}'"
 
     with conn.session as session:
