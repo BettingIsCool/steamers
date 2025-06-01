@@ -69,7 +69,7 @@ if active_bookmakers != db.get_user_setting(username=username, param='active_boo
     if active_bookmakers == 1:
         st.write('Add-On Package (1 bookmaker) for €49.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
         if st.button("Proceed to Payment"):
-            session = stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGhKn70PRJD')
+            session = stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJzPHE7Mhw1WGhbdXbxu5X')
             if session:
                 st.markdown(f"[Pay €49.99 Now]({session.url})")
                 st.write(stripe_api.check_payment_outcome(session_id=session.id))
