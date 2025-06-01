@@ -79,13 +79,6 @@ if active_bookmakers != db.get_user_setting(username=username, param='active_boo
         st.write('Cancel your bookmaker subscription', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
 
 
-    if payment_success:
-        db.change_user_setting(username=username, param='active_books', value=active_bookmakers)
-        st.success(f"You have successfully purchased {active_bookmakers} bookmaker(s).")
-    else:
-        st.error(f"There was an error while purchasing {active_bookmakers} bookmaker(s).")
-    db.change_user_setting(username=username, param='active_books', value=active_bookmakers)
-
 #         st.session_state.user_id = username
 #         st.session_state.session_id = username + '_' + str(datetime.datetime.now())
 #
