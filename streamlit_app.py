@@ -1,3 +1,4 @@
+import stripe_api
 import streamlit as st
 
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
@@ -67,12 +68,23 @@ active_bookmakers = st.selectbox(label="Active bookmakers", options=[0, 1, 2, 3]
 if active_bookmakers != db.get_user_setting(username=username, param='active_books'):
     if active_bookmakers == 1:
         st.write('Purchase one bookmaker for €49.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
+        stripe_api.create_monthly_subscription_by_email(email=username, price_id='price_1RVJBcHE7Mhw1WGhKn70PRJD')
     elif active_bookmakers == 2:
         st.write('Purchase one bookmaker for €79.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
+        stripe_api.create_monthly_subscription_by_email(email=username, price_id='price_1RVJBcHE7Mhw1WGhddGdhhSN')
     elif active_bookmakers == 3:
         st.write('Purchase one bookmaker for €99.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
+        stripe_api.create_monthly_subscription_by_email(email=username, price_id='price_1RVJBcHE7Mhw1WGh3CQUKQYP')
     elif active_bookmakers == 0:
         st.write('Cancel your bookmaker subscription', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
+
+
+    if payment_success:
+        db.change_user_setting(username=username, param='active_books', value=active_bookmakers)
+        st.success(f"You have successfully purchased {active_bookmakers} bookmaker(s).")
+    else:
+        st.error(f"There was an error while purchasing {active_bookmakers} bookmaker(s).")
+    db.change_user_setting(username=username, param='active_books', value=active_bookmakers)
 
 #         st.session_state.user_id = username
 #         st.session_state.session_id = username + '_' + str(datetime.datetime.now())
