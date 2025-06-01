@@ -75,7 +75,6 @@ if active_bookmakers != db.get_user_setting(username=username, param='active_boo
                 while True:
 
                     if stripe_api.check_payment_outcome(session_id=session.id)['status'] == 'success':
-                        payment_outcome = stripe_api.check_payment_outcome(session_id=session.id)['payment_outcome']
                         st.success(f"Payment successful.")
                         db.change_user_setting(username=username, param='active_books', value=1)
                         break
