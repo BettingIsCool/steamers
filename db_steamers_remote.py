@@ -41,6 +41,21 @@ def get_telegram_user_id(username: str):
     return conn.query(f"SELECT telegram_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_id'].tolist()
 
 
+def get_user_setting(username: str, param: str):
+
+    return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()[0]
+
+
+def change_user_setting(username: str, param: str, value: (float, int)):
+
+    st.session_state.default_minval = st.session_state.default_minval_key
+
+    query = f"UPDATE {TABLE_USERS} SET {param} = {value} WHERE username = '{username}'"
+
+    with conn.session as session:
+        session.execute(text(query))
+        session.commit()
+
 
 
 def set_telegram_button_pressed(username: str):
@@ -57,9 +72,7 @@ def set_telegram_button_pressed(username: str):
 
 
 
-def get_user_setting(username: str, param: str):
 
-    return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()[0]
 
 
 def change_user_odds_display(username: str, placeholder: st.delta_generator.DeltaGenerator):
