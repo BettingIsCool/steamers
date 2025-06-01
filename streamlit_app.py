@@ -14,14 +14,6 @@ import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
 
-# TODO Remove user from database if sub cancelled (check subscription via strip api)
-# TODO Fitzdares/bet600/fafabet/betgoodwin, Smarkets and SBK, ladbrokes AU
-# TODO retrieve odds from all bookmakers (update list of bookmakers every day)
-# TODO add media
-# TODO major refactoring
-# TODO Bad message format - Tried to use SessionInfo before it was initialized, see: https://www.restack.io/docs/streamlit-knowledge-streamlit-bad-message-format-fix
-# TODO replace url with 'Link': https://discuss.streamlit.io/t/st-data-editor-linkcolumn-with-different-label-and-url/45757
-
 placeholder1 = st.empty()
 placeholder2 = st.empty()
 

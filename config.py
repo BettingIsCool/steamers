@@ -939,7 +939,7 @@ TEXT_LANDING_PAGE = """
 
 🔥 Total Customization: Tailor your alerts by setting your minimum value threshold, preferred bookmakers, lookahead time, and more.
 
-🔥 Multisport Support: With more than 40 sports supported, we've got you covered!.
+🔥 Multisport Support: With more than 40 sports supported, we've got you covered!
 
 🔥 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 900 bookmakers.
 
