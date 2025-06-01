@@ -11,12 +11,6 @@ from config import TABLE_USERS
 conn = st.connection('steamers', type='sql')
 
 
-@st.cache_data()
-def get_log(bookmakers: str, minval: float, minodds: float, maxodds: float, lookahead: int):
-
-    return conn.query(f"SELECT starts, sport_name, league_name, runner_home, runner_away, selection, market, line, prev_odds, curr_odds, droppct, oddstobeat, book_odds, book_val, book_name, book_url, timestamp, id, bet_str, timestamp_utc, starts_utc, updated_ago, drop_str, drop_str_american FROM {TABLE_LOG} WHERE book_slug IN {bookmakers} AND book_val >= {minval} AND book_odds >= {minodds} AND book_odds <= {maxodds} AND TIMESTAMPDIFF(HOUR,NOW(),starts_utc) < {lookahead} ORDER BY timestamp_utc DESC LIMIT 25").to_dict('records')
-
-
 def get_users():
     """
     :return: List of usernames retrieved from the database TABLE_USERS.
@@ -42,6 +36,13 @@ def get_user_dbid(username: str):
     return conn.query(f"SELECT id FROM {TABLE_USERS} WHERE username = '{username}'")['id'].tolist()
 
 
+def get_telegram_user_id(username: str):
+
+    return conn.query(f"SELECT telegram_user_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_id'].tolist()
+
+
+
+
 def set_telegram_button_pressed(username: str):
 
     query = f"UPDATE {TABLE_USERS} SET telegram_button_pressed = '{datetime.now()}' WHERE username = '{username}'"
@@ -51,9 +52,6 @@ def set_telegram_button_pressed(username: str):
         session.commit()
 
 
-def get_telegram_user_id(username: str):
-
-    return conn.query(f"SELECT telegram_user_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_user_id'].tolist()
 
 
 
