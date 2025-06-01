@@ -67,8 +67,10 @@ st.subheader(f"Purchase bookmaker deeplinks")
 active_bookmakers = st.selectbox(label="Active bookmakers", options=[0, 1, 2, 3], index=db.get_user_setting(username=username, param='active_books'), help='Bookmaker deeplinks will be included in every alert and will take you to the respective market in one click. You can purchase up to 3 different bookmakers. You will be able to swap bookmakers at any time.')
 if active_bookmakers != db.get_user_setting(username=username, param='active_books'):
     if active_bookmakers == 1:
+        payment_button_pressed = False
         st.write('Add-On Package (1 bookmaker) for €49.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
-        if st.button("Proceed to Payment"):
+        payment_button_pressed = st.button("Proceed to Payment")
+        if payment_button_pressed:
             session = stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGhKn70PRJD')
             if session:
                 st.markdown(f"[Pay €49.99 Now]({session.url})")
