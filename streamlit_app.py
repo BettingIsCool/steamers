@@ -49,8 +49,18 @@ if 'users_fetched' not in st.session_state:
 # Welcome message in the sidebar
 st.sidebar.subheader(f"Welcome {username}")
 
+# Change user settings
 selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=db.get_user_setting(username=username, param='minval'), step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
 db.change_user_setting(username=username, param='minval', value=selected_minval)
+
+selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=db.get_user_setting(username=username, param='minodds'), step=0.05, format="%0.2f")
+db.change_user_setting(username=username, param='minodds', value=selected_minodds)
+
+selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=db.get_user_setting(username=username, param='maxodds'), step=0.05, format="%0.2f")
+db.change_user_setting(username=username, param='maxodds', value=selected_maxodds)
+
+selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=db.get_user_setting(username=username, param='lookahead'), step=1, help='Show only events that start within the next x hours.')
+db.change_user_setting(username=username, param='lookahead', value=selected_lookahead)
 
 
 
