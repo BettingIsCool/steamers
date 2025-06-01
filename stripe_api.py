@@ -48,13 +48,7 @@ def create_checkout_session_for_subscription(email: str, price_id: str) -> dict:
         )
 
         # Return session details
-        return {
-            'status': 'success',
-            'session_id': session.id,
-            'session_url': session.url,
-            'customer_id': customer.id,
-            'created': datetime.fromtimestamp(session.created).isoformat()
-        }
+        return session
 
     except stripe.error.InvalidRequestError as e:
         return {
