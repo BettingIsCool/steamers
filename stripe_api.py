@@ -62,7 +62,7 @@ def create_checkout_session_for_subscription(email: str, price_id: str) -> dict:
         }
 
 
-def check_payment_outcome(session_id: str, max_attempts: int = 30, delay: int = 10) -> Optional[Dict]:
+def check_payment_outcome(session_id: str, max_attempts: int = 30, delay: int = 10):
     """
     Poll the Stripe API to check the Checkout Session outcome.
     Returns outcome or None if max attempts reached.
