@@ -67,10 +67,6 @@ if 'users_fetched' not in st.session_state:
 if st.session_state.session_id == toolkit.get_active_session(st.session_state.user_id):
 
     # Get user preferences
-    if 'default_odds_display' not in st.session_state:
-        st.session_state.default_odds_display = db.get_user_setting(username=username, param='default_odds_display')
-    if 'default_timezone' not in st.session_state:
-        st.session_state.default_timezone = db.get_user_setting(username=username, param='default_timezone')
     if 'default_minval' not in st.session_state:
         st.session_state.default_minval = db.get_user_setting(username=username, param='default_minval')
     if 'default_minodds' not in st.session_state:

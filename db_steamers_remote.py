@@ -25,6 +25,18 @@ def get_users():
     return conn.query(f"SELECT username FROM {TABLE_USERS}")['username'].tolist()
 
 
+def append_user(data: dict):
+    """
+    :param data: Dictionary containing user data with the key 'username'.
+    :return: None
+    """
+    query = f"INSERT INTO {TABLE_USERS} (username, minval, minodds, maxodds, lookahead) VALUES(:username, :minval, :minodds, :maxodds, :lookahead)"
+
+    with conn.session as session:
+        session.execute(text(query), params=dict(username=data['username'], minval=0.10, minodds=1.01, maxodds=100.00, lookahead=8))
+        session.commit()
+
+
 def get_user_dbid(username: str):
 
     return conn.query(f"SELECT id FROM {TABLE_USERS} WHERE username = '{username}'")['id'].tolist()
@@ -44,16 +56,7 @@ def get_telegram_user_id(username: str):
     return conn.query(f"SELECT telegram_user_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_user_id'].tolist()
 
 
-def append_user(data: dict):
-    """
-    :param data: Dictionary containing user data with the key 'username'.
-    :return: None
-    """
-    query = f"INSERT INTO {TABLE_USERS} (username, default_odds_display, default_timezone, default_minval, default_minodds, default_maxodds, default_book1, default_book2, default_book3, default_book4, default_book5, default_lookahead) VALUES(:username, :default_odds_display, :default_timezone, :default_minval, :default_minodds, :default_maxodds, :default_book1, :default_book2, :default_book3, :default_book4, :default_book5, :default_lookahead)"
 
-    with conn.session as session:
-        session.execute(text(query), params=dict(username=data['username'], default_lookahead=24, default_odds_display='Decimal', default_timezone='Europe/London', default_minval=0.050, default_minodds=1, default_maxodds=100.00, default_book1='bet365', default_book2='bwin', default_book3='unibet', default_book4='williamhill', default_book5='winamax.es'))
-        session.commit()
 
 
 def get_user_setting(username: str, param: str):
