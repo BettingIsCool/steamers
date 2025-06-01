@@ -38,7 +38,7 @@ def get_user_dbid(username: str):
 
 def get_telegram_user_id(username: str):
 
-    return conn.query(f"SELECT telegram_user_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_id'].tolist()
+    return conn.query(f"SELECT telegram_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_id'].tolist()
 
 
 
