@@ -60,3 +60,24 @@ def create_checkout_session_for_subscription(email: str, price_id: str) -> dict:
             'status': 'error',
             'message': f"An error occurred: {str(e)}"
         }
+
+
+def check_payment_outcome(session_id: str, max_attempts: int = 30, delay: int = 10) -> Optional[Dict]:
+    """
+    Poll the Stripe API to check the Checkout Session outcome.
+    Returns outcome or None if max attempts reached.
+    """
+    stripe.api_key = st.secrets["stripe_api_key"]
+    for _ in range(max_attempts):
+        try:
+            session = stripe.checkout.Session.retrieve(session_id)
+            if session.status == 'complete' and session.payment_status == 'paid':
+                subscription = stripe.Subscription.retrieve(session.subscription)
+                if subscription.status == 'active':
+                    return {'status': 'success', 'data': {'subscription_id': session.subscription}}
+            elif session.payment_status == 'unpaid' or session.status == 'expired':
+                return {'status': 'failure', 'data': {'error': 'Payment failed or session expired'}}
+        except stripe.error.StripeError as e:
+            return {'status': 'failure', 'data': {'error': str(e)}}
+        time.sleep(delay)
+    return None
