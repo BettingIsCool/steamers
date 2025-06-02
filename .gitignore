@@ -22,7 +22,7 @@
 /_scan_ultra_steamers (totals).py
 /db_opapi.py
 /tools.py
-/_fetch_telegram_user_id.py
+/_start_polling.py
 /_send_telegram_bets.py
 /api_telegram.py
 /replies.txt
@@ -39,3 +39,4 @@
 /spreadsheet.py
 /spreadsheet_api_key.json
 /+settle_and_export_bets.py
+/_start_polling.py
