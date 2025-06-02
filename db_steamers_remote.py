@@ -37,7 +37,8 @@ def get_user_setting(username: str, param: str):
 def change_sports(username: str):
 
     st.session_state.sports = st.session_state.sports_key
+    sports_string = ','.join(st.session_state.sports)
 
     with conn.session as session:
-        session.execute(text(f"UPDATE {TABLE_USERS} SET timezone = '{st.session_state.sports}' WHERE username = '{username}'"))
+        session.execute(text(f"UPDATE {TABLE_USERS} SET timezone = '{sports_string}' WHERE username = '{username}'"))
         session.commit()
