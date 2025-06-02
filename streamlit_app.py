@@ -41,6 +41,8 @@ username = st.session_state.email
 placeholder1.empty()
 placeholder2.empty()
 
+st.cache_data.clear()
+
 st.write(username)
 users = set(db.get_users())
 time.sleep(1)
