@@ -50,7 +50,7 @@ if 'users_fetched' not in st.session_state:
 st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
-selected_sports = st.multiselect(label="Sports", options=list(SPORTS.keys()), index=list(SPORTS.keys()).index(st.session_state.default_sport), help="Sports to be included in your alerts.")
+selected_sports = st.multiselect(label="Sports", options=list(SPORTS.keys()), help="Sports to be included in your alerts.")
 
 selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=db.get_user_setting(username=username, param='minval'), step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
 db.change_user_setting(username=username, param='minval', value=selected_minval)
