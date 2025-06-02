@@ -56,7 +56,7 @@ st.header(f"Settings")
 
 
 selected_sports = st.multiselect(label="Sports", options=SPORTS.keys(), format_func=lambda x: SPORTS.get(x), help="Sports to be included in your alerts.")
-
+st.write(selected_sports)
 #selected_event_id = st.selectbox(label='Event', options=event_options.keys(), index=None,
 #                                 format_func=lambda x: event_options.get(x), placeholder='Add a bet. Start typing...',
 #                                 help="Start searching your fixture by typing any league, home team, away team. Only fixtures with available odds are listed. Please note that corner & booking markets can be found with the respective suffix, i.e. '(Corners)', '(Bookings)'. Tennis markets with games as the resulting unit (i.e. total number of games) can be found with '(Games)' as the suffix.")
