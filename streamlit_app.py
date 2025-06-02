@@ -66,15 +66,15 @@ st.subheader(f"Bookmaker Deeplinks")
 col_book1, col_book2, col_book3 = st.columns([1, 1, 1])
 
 with col_book1:
-    selected_book1 = st.selectbox(label='Bookie 1', options=BOOKS, index=db.get_user_setting(username=username, param='book1'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    selected_book1 = st.selectbox(label='Bookie 1', options=sorted(list(BOOKS)), index=db.get_user_setting(username=username, param='book1'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
     db.change_user_setting(username=username, param='book1', value=selected_book1)
 
 with col_book2:
-    selected_book2 = st.selectbox(label='Bookie 1', options=BOOKS, index=db.get_user_setting(username=username, param='book2'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    selected_book2 = st.selectbox(label='Bookie 2', options=BOOKS, index=db.get_user_setting(username=username, param='book2'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
     db.change_user_setting(username=username, param='book2', value=selected_book2)
 
 with col_book3:
-    selected_book3 = st.selectbox(label='Bookie 1', options=BOOKS, index=db.get_user_setting(username=username, param='book3'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    selected_book3 = st.selectbox(label='Bookie 3', options=BOOKS, index=db.get_user_setting(username=username, param='book3'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
     db.change_user_setting(username=username, param='book3', value=selected_book3)
 
 
