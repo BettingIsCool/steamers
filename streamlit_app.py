@@ -49,11 +49,9 @@ if 'users_fetched' not in st.session_state:
         db.append_user(data={'username': username})
     st.session_state.users_fetched = True
 
-
 # Load settings into session state
 if 'sports' not in st.session_state:
     st.session_state.sports = db.get_user_setting(username=username, param='sports').split(',')
-
 if 'markets' not in st.session_state:
     st.session_state.markets = db.get_user_setting(username=username, param='markets').split(',')
 
@@ -61,7 +59,10 @@ if 'markets' not in st.session_state:
 st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
-selected_sports = st.multiselect(label="Sports", options=SPORTS, default=db.get_user_setting(username=username, param='sports').split(','), on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports do you want to have included in your alerts?")
+selected_sports = st.multiselect(label="Sports", options=SPORTS, default=db.get_user_setting(username=username, param='sports').split(','), on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports should be included in your alerts?")
+selected_markets = st.multiselect(label="Markets", options=MARKETS, default=db.get_user_setting(username=username, param='markets').split(','), on_change=db.change_markets, args=(username,), key='markets_key', help="Which markets should be included in your alerts?")
+
+
 #
 #
 # selected_markets = st.multiselect(label="Markets", options=MARKETS, default=db.get_user_setting(username=username, param='markets').split(','), help="Which markets do you want to have included in your alerts?")

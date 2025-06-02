@@ -42,3 +42,14 @@ def change_sports(username: str):
     with conn.session as session:
         session.execute(text(f"UPDATE {TABLE_USERS} SET sports = '{sports_string}' WHERE username = '{username}'"))
         session.commit()
+
+
+@st.cache_data()
+def change_markets(username: str):
+
+    st.session_state.markets = st.session_state.markets_key
+    markets_string = ','.join(st.session_state.markets)
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET markets = '{markets_string}' WHERE username = '{username}'"))
+        session.commit()
