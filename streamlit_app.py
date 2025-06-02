@@ -102,3 +102,5 @@ with col_book2:
     selected_book2 = st.selectbox(label='Bookie 2', options=sorted(list(BOOKS)), index=sorted(list(BOOKS)).index(st.session_state.book2), key='book2_key', on_change=db.change_book2, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
 with col_book3:
     selected_book3 = st.selectbox(label='Bookie 3', options=sorted(list(BOOKS)), index=sorted(list(BOOKS)).index(st.session_state.book3), key='book3_key', on_change=db.change_book3, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+
+st.write("If you can't see your preferred bookmaker listed then please get in touch at contact@bettingiscool.com and I will try to add it.")
