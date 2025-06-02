@@ -6,7 +6,7 @@ st.set_page_config(page_title="ChasingSteamers Personal by BettingIsCool", page_
 import time
 import pytz
 import toolkit
-from config import BOOKS, TEXT_LANDING_PAGE
+from config import SPORTS, MARKETS, BOOKS, TEXT_LANDING_PAGE
 
 
 import datetime
@@ -50,6 +50,8 @@ if 'users_fetched' not in st.session_state:
 st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
+selected_sports = st.multiselect(label="Sports", options=list(SPORTS.keys()), index=list(SPORTS.keys()).index(st.session_state.default_sport), help="Sports to be included in your alerts.")
+
 selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=db.get_user_setting(username=username, param='minval'), step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
 db.change_user_setting(username=username, param='minval', value=selected_minval)
 
@@ -67,8 +69,7 @@ col_book1, col_book2, col_book3 = st.columns([1, 1, 1])
 
 with col_book1:
     selected_book1 = st.selectbox(label='Bookie 1', options=sorted(list(BOOKS)), index=db.get_user_setting(username=username, param='book1'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
-    st.write(f'Current bookmaker: {selected_book1}')
-db.change_user_setting(username=username, param='book1', value=selected_book1)
+    db.change_user_setting(username=username, param='book1', value=selected_book1)
 
 with col_book2:
     selected_book2 = st.selectbox(label='Bookie 2', options=BOOKS, index=db.get_user_setting(username=username, param='book2'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
