@@ -63,3 +63,33 @@ def change_minval(username: str):
     with conn.session as session:
         session.execute(text(f"UPDATE {TABLE_USERS} SET minval = {st.session_state.minval} WHERE username = '{username}'"))
         session.commit()
+
+
+@st.cache_data()
+def change_minodds(username: str):
+
+    st.session_state.minodds = st.session_state.minodds_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET minodds = {st.session_state.minodds} WHERE username = '{username}'"))
+        session.commit()
+        
+
+@st.cache_data()
+def change_maxodds(username: str):
+
+    st.session_state.maxodds = st.session_state.maxodds_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET maxodds = {st.session_state.maxodds} WHERE username = '{username}'"))
+        session.commit()
+        
+
+@st.cache_data()
+def change_lookahead(username: str):
+
+    st.session_state.lookahead = st.session_state.lookahead_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET lookahead = {st.session_state.lookahead} WHERE username = '{username}'"))
+        session.commit()
