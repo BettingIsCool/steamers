@@ -77,8 +77,8 @@ if st.session_state.telegram_id is None:
         # URL to redirect to
         url = "https://t.me/psp_ultra_bot/"
         # Open URL in new tab
-        st.sidebar.markdown(f'''<a href={url}><button style="background-color:Red;">Click here to connect! Link will expire in 1 minute.</button></a>''', unsafe_allow_html=True)
-        #st.markdown(f'<meta http-equiv="refresh" content="0;URL={url}" />', unsafe_allow_html=True)
+        #st.sidebar.markdown(f'''<a href={url}><button style="background-color:Red;">Click here to connect! Link will expire in 1 minute.</button></a>''', unsafe_allow_html=True)
+        st.sidebar.markdown(f'<meta http-equiv="refresh" content="0;URL={url}" />', unsafe_allow_html=True)
 
 
     #st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
