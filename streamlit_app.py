@@ -54,14 +54,16 @@ if 'sports' not in st.session_state:
     st.session_state.sports = db.get_user_setting(username=username, param='sports').split(',')
 if 'markets' not in st.session_state:
     st.session_state.markets = db.get_user_setting(username=username, param='markets').split(',')
+if 'minval' not in st.session_state:
+    st.session_state.minval = db.get_user_setting(username=username, param='minval')
 
 # Welcome message in the sidebar
 st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
-selected_sports = st.multiselect(label="Sports", options=SPORTS, default=db.get_user_setting(username=username, param='sports').split(','), on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports should be included in your alerts?")
-selected_markets = st.multiselect(label="Markets", options=MARKETS, default=db.get_user_setting(username=username, param='markets').split(','), on_change=db.change_markets, args=(username,), key='markets_key', help="Which markets should be included in your alerts?")
-
+selected_sports = st.multiselect(label="Sports", options=SPORTS, default=st.session_state.sports, on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports should be included in your alerts?")
+selected_markets = st.multiselect(label="Markets", options=MARKETS, default=st.session_state.markets, on_change=db.change_markets, args=(username,), key='markets_key', help="Which markets should be included in your alerts?")
+selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.minval, step=0.005, format="%0.3f", key='minval_key', on_change=db.change_minval, args=(username,), help='Enter percentage as decimal number. 5% = 0.05')
 
 #
 #

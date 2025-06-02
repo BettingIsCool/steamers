@@ -53,3 +53,13 @@ def change_markets(username: str):
     with conn.session as session:
         session.execute(text(f"UPDATE {TABLE_USERS} SET markets = '{markets_string}' WHERE username = '{username}'"))
         session.commit()
+
+
+@st.cache_data()
+def change_minval(username: str):
+
+    st.session_state.minval = st.session_state.minval_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET minval = {st.session_state.minval} WHERE username = '{username}'"))
+        session.commit()
