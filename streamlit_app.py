@@ -68,6 +68,13 @@ if 'book2' not in st.session_state:
     st.session_state.book2 = db.get_user_setting(username=username, param='book2')
 if 'book3' not in st.session_state:
     st.session_state.book3 = db.get_user_setting(username=username, param='book3')
+if 'telegram_id' not in st.session_state:
+    st.session_state.telegram_id = db.get_user_setting(username=username, param='telegram_id')
+
+# Connect Telegram
+if st.session_state.telegram_id is None:
+    st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
+    st.session_state.telegram_id = db.get_user_setting(username=username, param='telegram_id')
 
 # Welcome message in the sidebar
 st.sidebar.subheader(f"Welcome {username}")
