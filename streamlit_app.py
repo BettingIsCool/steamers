@@ -41,6 +41,8 @@ username = st.session_state.email
 placeholder1.empty()
 placeholder2.empty()
 
+st.cache_data.clear()
+
 # Check if username is in database, otherwise append the user
 if 'users_fetched' not in st.session_state:
     if username not in set(db.get_users()):
