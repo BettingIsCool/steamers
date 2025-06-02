@@ -62,6 +62,12 @@ if 'maxodds' not in st.session_state:
     st.session_state.maxodds = db.get_user_setting(username=username, param='maxodds')
 if 'lookahead' not in st.session_state:
     st.session_state.lookahead = db.get_user_setting(username=username, param='lookahead')
+if 'book1' not in st.session_state:
+    st.session_state.book1 = db.get_user_setting(username=username, param='book1')
+if 'book2' not in st.session_state:
+    st.session_state.book2 = db.get_user_setting(username=username, param='book2')
+if 'book3' not in st.session_state:
+    st.session_state.book3 = db.get_user_setting(username=username, param='book3')
 
 # Welcome message in the sidebar
 st.sidebar.subheader(f"Welcome {username}")
@@ -73,6 +79,16 @@ selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, ma
 selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.minodds, step=0.05, format="%0.2f", key='minodds_key', on_change=db.change_minodds, args=(username,))
 selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.maxodds, step=0.05, format="%0.2f", key='maxodds_key', on_change=db.change_maxodds, args=(username,))
 selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=st.session_state.lookahead, step=1, key='lookahead_key', on_change=db.change_lookahead, args=(username,), help='Show only events that start within the next x hours.')
+
+st.subheader(f"Bookmaker Deeplinks")
+col_book1, col_book2, col_book3 = st.columns([1, 1, 1])
+
+with col_book1:
+    selected_book1 = st.selectbox(label='Bookie 1', options=sorted(list(BOOKS)), index=st.session_state.book1, key='book1_key', on_change=db.change_book1, help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+with col_book2:
+    selected_book2 = st.selectbox(label='Bookie 2', options=sorted(list(BOOKS)), index=st.session_state.book2, key='book2_key', on_change=db.change_book2, help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+with col_book3:
+    selected_book3 = st.selectbox(label='Bookie 3', options=sorted(list(BOOKS)), index=st.session_state.book3, key='book3_key', on_change=db.change_book3, help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
 
 
 # selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=db.get_user_setting(username=username, param='lookahead'), step=1, help='Show only events that start within the next x hours.')

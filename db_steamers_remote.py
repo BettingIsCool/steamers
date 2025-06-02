@@ -93,3 +93,33 @@ def change_lookahead(username: str):
     with conn.session as session:
         session.execute(text(f"UPDATE {TABLE_USERS} SET lookahead = {st.session_state.lookahead} WHERE username = '{username}'"))
         session.commit()
+        
+
+@st.cache_data()
+def change_book1(username: str):
+
+    st.session_state.book1 = st.session_state.book1_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET book1 = '{st.session_state.book1}' WHERE username = '{username}'"))
+        session.commit()
+
+
+@st.cache_data()
+def change_book2(username: str):
+
+    st.session_state.book2 = st.session_state.book2_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET book2 = '{st.session_state.book2}' WHERE username = '{username}'"))
+        session.commit()
+        
+
+@st.cache_data()
+def change_book3(username: str):
+
+    st.session_state.book3 = st.session_state.book3_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET book3 = '{st.session_state.book3}' WHERE username = '{username}'"))
+        session.commit()
