@@ -73,7 +73,14 @@ if 'telegram_id' not in st.session_state:
 
 # Connect Telegram
 if st.session_state.telegram_id is None:
-    st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
+    if st.button("Go to Website"):
+        # URL to redirect to
+        url = "https://t.me/psp_ultra_bot"
+        # Open URL in new tab
+        st.markdown(f'<meta http-equiv="refresh" content="0;URL={url}" />', unsafe_allow_html=True)
+
+
+    #st.sidebar.button('Connect Telegram', help='Hit this button to receive telegram alerts.', type='primary', on_click=toolkit.redirect_button)
     st.session_state.telegram_id = db.get_user_setting(username=username, param='telegram_id')
 
 # Welcome message in the sidebar
