@@ -42,7 +42,9 @@ placeholder1.empty()
 placeholder2.empty()
 
 st.write(username)
-st.write(set(db.get_users()))
+users = set(db.get_users())
+time.sleep(1)
+st.write(users)
 # Check if username is in database, otherwise append the user
 if 'users_fetched' not in st.session_state:
     if username not in set(db.get_users()):
