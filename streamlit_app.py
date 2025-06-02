@@ -51,6 +51,7 @@ st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
 selected_sports = st.multiselect(label="Sports", options=SPORTS, default=db.get_user_setting(username=username, param='sports').split(','), help="Which sports do you want to have included in your alerts?")
+st.write(','.join(selected_sports))
 db.change_user_setting(username=username, param='sports', value=','.join(selected_sports))
 
 selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=db.get_user_setting(username=username, param='minval'), step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
