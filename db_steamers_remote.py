@@ -123,3 +123,12 @@ def change_book3(username: str):
     with conn.session as session:
         session.execute(text(f"UPDATE {TABLE_USERS} SET book3 = '{st.session_state.book3}' WHERE username = '{username}'"))
         session.commit()
+
+
+def set_telegram_button_pressed(username: str):
+
+    query = f"UPDATE {TABLE_USERS} SET telegram_button_pressed = '{datetime.now()}' WHERE username = '{username}'"
+
+    with conn.session as session:
+        session.execute(text(query))
+        session.commit()
