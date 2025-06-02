@@ -31,6 +31,22 @@ def append_user(data: dict):
         session.commit()
 
 
+def get_user_setting(username: str, param: str):
+
+    return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()[0]
+
+
+def change_user_setting(username: str, param: str, value: (float, int)):
+
+    query = f"UPDATE {TABLE_USERS} SET {param} = {value} WHERE username = '{username}'" if 'book' not in param else f"UPDATE {TABLE_USERS} SET {param} = '{value}' WHERE username = '{username}'"
+
+    with conn.session as session:
+        session.execute(text(query))
+        session.commit()
+
+
+
+
 def get_user_dbid(username: str):
 
     return conn.query(f"SELECT id FROM {TABLE_USERS} WHERE username = '{username}'")['id'].tolist()
@@ -41,18 +57,7 @@ def get_telegram_user_id(username: str):
     return conn.query(f"SELECT telegram_id FROM {TABLE_USERS} WHERE username = '{username}'")['telegram_id'].tolist()
 
 
-def get_user_setting(username: str, param: str):
 
-    return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()[0]
-
-
-def change_user_setting(username: str, param: str, value: (float, int)):
-
-    query = f"UPDATE {TABLE_USERS} SET {param} = {value} WHERE username = '{username}'"
-
-    with conn.session as session:
-        session.execute(text(query))
-        session.commit()
 
 
 
