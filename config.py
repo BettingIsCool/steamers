@@ -993,7 +993,7 @@ BOOKS.add('ParionsSport (FR)')
 BOOKS.add('ZeBet (NL)')
 BOOKS.add('Zenit')
 BOOKS.add('Zenit (Win)')
-BOOKS.add('None')
+BOOKS.add('No Book')
 
 TEXT_LANDING_PAGE = """
 
