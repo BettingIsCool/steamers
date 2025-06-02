@@ -40,5 +40,5 @@ def change_sports(username: str):
     sports_string = ','.join(st.session_state.sports)
 
     with conn.session as session:
-        session.execute(text(f"UPDATE {TABLE_USERS} SET timezone = '{sports_string}' WHERE username = '{username}'"))
+        session.execute(text(f"UPDATE {TABLE_USERS} SET sports = '{sports_string}' WHERE username = '{username}'"))
         session.commit()
