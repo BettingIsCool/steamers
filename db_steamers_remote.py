@@ -11,6 +11,7 @@ from config import TABLE_USERS
 conn = st.connection('steamers', type='sql')
 
 
+@st.cache_data()
 def get_users():
     """
     :return: List of usernames retrieved from the database TABLE_USERS.
@@ -19,6 +20,7 @@ def get_users():
     return conn.query(f"SELECT username FROM {TABLE_USERS}")['username'].tolist()
 
 
+@st.cache_data()
 def append_user(data: dict):
     """
     :param data: Dictionary containing user data with the key 'username'.
@@ -31,11 +33,13 @@ def append_user(data: dict):
         session.commit()
 
 
+@st.cache_data()
 def get_user_setting(username: str, param: str):
 
     return conn.query(f"SELECT {param} FROM {TABLE_USERS} WHERE username = '{username}'")[param].tolist()[0]
 
 
+@st.cache_data()
 def change_user_setting(username: str, param: str, value: (float, int)):
 
     if 'book' in param or 'sports' in param or 'markets' in param:
