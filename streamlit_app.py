@@ -41,49 +41,56 @@ username = st.session_state.email
 placeholder1.empty()
 placeholder2.empty()
 
-st.cache_data.clear()
-
 # Check if username is in database, otherwise append the user
 if 'users_fetched' not in st.session_state:
     if username not in set(db.get_users()):
         db.append_user(data={'username': username})
+    st.session_state.users_fetched = True
+
+
+# Load settings into session state
+if 'sports' not in st.session_state:
+    st.session_state.sports = db.get_user_setting(username=username, param='sports').split(',')
+
+if 'markets' not in st.session_state:
+    st.session_state.markets = db.get_user_setting(username=username, param='markets').split(',')
 
 # Welcome message in the sidebar
 st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
-selected_sports = st.multiselect(label="Sports", options=SPORTS, default=db.get_user_setting(username=username, param='sports').split(','), help="Which sports do you want to have included in your alerts?")
-db.change_user_setting(username=username, param='sports', value=','.join(selected_sports))
-
-selected_markets = st.multiselect(label="Markets", options=MARKETS, default=db.get_user_setting(username=username, param='markets').split(','), help="Which markets do you want to have included in your alerts?")
-db.change_user_setting(username=username, param='markets', value=','.join(selected_markets))
-
-selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=db.get_user_setting(username=username, param='minval'), step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
-db.change_user_setting(username=username, param='minval', value=selected_minval)
-
-selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=db.get_user_setting(username=username, param='minodds'), step=0.05, format="%0.2f")
-db.change_user_setting(username=username, param='minodds', value=selected_minodds)
-
-selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=db.get_user_setting(username=username, param='maxodds'), step=0.05, format="%0.2f")
-db.change_user_setting(username=username, param='maxodds', value=selected_maxodds)
-
-selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=db.get_user_setting(username=username, param='lookahead'), step=1, help='Show only events that start within the next x hours.')
-db.change_user_setting(username=username, param='lookahead', value=selected_lookahead)
-
-st.subheader(f"Bookmaker Deeplinks")
-col_book1, col_book2, col_book3 = st.columns([1, 1, 1])
-
-with col_book1:
-    selected_book1 = st.selectbox(label='Bookie 1', options=sorted(list(BOOKS)), index=db.get_user_setting(username=username, param='book1'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
-    db.change_user_setting(username=username, param='book1', value=selected_book1)
-
-with col_book2:
-    selected_book2 = st.selectbox(label='Bookie 2', options=BOOKS, index=db.get_user_setting(username=username, param='book2'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
-    db.change_user_setting(username=username, param='book2', value=selected_book2)
-
-with col_book3:
-    selected_book3 = st.selectbox(label='Bookie 3', options=BOOKS, index=db.get_user_setting(username=username, param='book3'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
-    db.change_user_setting(username=username, param='book3', value=selected_book3)
+selected_sports = st.multiselect(label="Sports", options=SPORTS, default=db.get_user_setting(username=username, param='sports').split(','), on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports do you want to have included in your alerts?")
+#
+#
+# selected_markets = st.multiselect(label="Markets", options=MARKETS, default=db.get_user_setting(username=username, param='markets').split(','), help="Which markets do you want to have included in your alerts?")
+# db.change_user_setting(username=username, param='markets', value=','.join(selected_markets))
+#
+# selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=db.get_user_setting(username=username, param='minval'), step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
+# db.change_user_setting(username=username, param='minval', value=selected_minval)
+#
+# selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=db.get_user_setting(username=username, param='minodds'), step=0.05, format="%0.2f")
+# db.change_user_setting(username=username, param='minodds', value=selected_minodds)
+#
+# selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=db.get_user_setting(username=username, param='maxodds'), step=0.05, format="%0.2f")
+# db.change_user_setting(username=username, param='maxodds', value=selected_maxodds)
+#
+# selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=db.get_user_setting(username=username, param='lookahead'), step=1, help='Show only events that start within the next x hours.')
+# db.change_user_setting(username=username, param='lookahead', value=selected_lookahead)
+#
+# st.subheader(f"Bookmaker Deeplinks")
+# col_book1, col_book2, col_book3 = st.columns([1, 1, 1])
+#
+# with col_book1:
+#     selected_book1 = st.selectbox(label='Bookie 1', options=sorted(list(BOOKS)), index=db.get_user_setting(username=username, param='book1'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+#     db.change_user_setting(username=username, param='book1', value=selected_book1)
+#
+# with col_book2:
+#     selected_book2 = st.selectbox(label='Bookie 2', options=BOOKS, index=db.get_user_setting(username=username, param='book2'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+#     db.change_user_setting(username=username, param='book2', value=selected_book2)
+#
+# with col_book3:
+#     selected_book3 = st.selectbox(label='Bookie 3', options=BOOKS, index=db.get_user_setting(username=username, param='book3'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+#     db.change_user_setting(username=username, param='book3', value=selected_book3)
 
 
 #         st.session_state.user_id = username
