@@ -84,11 +84,11 @@ st.subheader(f"Bookmaker Deeplinks")
 col_book1, col_book2, col_book3 = st.columns([1, 1, 1])
 
 with col_book1:
-    selected_book1 = st.selectbox(label='Bookie 1', options=sorted(list(BOOKS)), key='book1_key', on_change=db.change_book1, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    selected_book1 = st.selectbox(label='Bookie 1', options=sorted(list(BOOKS)), index=BOOKS.index(st.session_state.book1), key='book1_key', on_change=db.change_book1, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
 with col_book2:
-    selected_book2 = st.selectbox(label='Bookie 2', options=sorted(list(BOOKS)), key='book2_key', on_change=db.change_book2, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    selected_book2 = st.selectbox(label='Bookie 2', options=sorted(list(BOOKS)), index=BOOKS.index(st.session_state.book2), key='book2_key', on_change=db.change_book2, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
 with col_book3:
-    selected_book3 = st.selectbox(label='Bookie 3', options=sorted(list(BOOKS)), key='book3_key', on_change=db.change_book3, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    selected_book3 = st.selectbox(label='Bookie 3', options=sorted(list(BOOKS)), index=BOOKS.index(st.session_state.book3), key='book3_key', on_change=db.change_book3, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
 
 
 # selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=db.get_user_setting(username=username, param='lookahead'), step=1, help='Show only events that start within the next x hours.')
