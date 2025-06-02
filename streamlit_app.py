@@ -50,17 +50,8 @@ if 'users_fetched' not in st.session_state:
 st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
-#default_sports = list()
-#for sport_id in db.get_user_setting(username=username, param='sports').split(','):
-#    default_sports.append(SPORTS[sport_id])
-
-
-selected_sports = st.multiselect(label="Sports", options=SPORTS.keys(), format_func=lambda x: SPORTS.get(x), help="Sports to be included in your alerts.")
-st.write(selected_sports)
-#selected_event_id = st.selectbox(label='Event', options=event_options.keys(), index=None,
-#                                 format_func=lambda x: event_options.get(x), placeholder='Add a bet. Start typing...',
-#                                 help="Start searching your fixture by typing any league, home team, away team. Only fixtures with available odds are listed. Please note that corner & booking markets can be found with the respective suffix, i.e. '(Corners)', '(Bookings)'. Tennis markets with games as the resulting unit (i.e. total number of games) can be found with '(Games)' as the suffix.")
-
+selected_sports = st.multiselect(label="Sports", options=SPORTS, default=db.get_user_setting(username=username, param='sports').split(','), help="Which sports do you want to have included in your alerts?")
+db.change_user_setting(username=username, param='sports', value=','.join(selected_sports))
 
 selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=db.get_user_setting(username=username, param='minval'), step=0.005, format="%0.3f", help='Enter percentage as decimal number. 5% = 0.05')
 db.change_user_setting(username=username, param='minval', value=selected_minval)
