@@ -37,6 +37,9 @@ add_auth(required=True)
 time.sleep(0.25)
 username = st.session_state.email
 
+# Welcome message in the sidebar
+st.sidebar.subheader(f"Welcome {username}")
+
 placeholder1.empty()
 placeholder2.empty()
 
@@ -80,8 +83,6 @@ if st.session_state.telegram_id is None:
 else:
     st.sidebar.write(f"Telegram connected: {st.session_state.telegram_id}")
 
-# Welcome message in the sidebar
-st.sidebar.subheader(f"Welcome {username}")
 
 st.header(f"Settings")
 selected_sports = st.multiselect(label="Sports", options=SPORTS, default=st.session_state.sports, on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports should be included in your alerts?")
