@@ -64,8 +64,10 @@ SPORTS.append('Tennis')
 SPORTS.append('Volleyball')
 SPORTS.append('Water Polo')
 
-MARKETS = dict()
-
+MARKETS = list()
+MARKETS.append('moneyline')
+MARKETS.append('spread')
+MARKETS.append('totals')
 
 BOOKS = set()
 BOOKS.add('10Bet')
