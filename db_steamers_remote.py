@@ -38,7 +38,11 @@ def get_user_setting(username: str, param: str):
 
 def change_user_setting(username: str, param: str, value: (float, int)):
 
-    query = f"UPDATE {TABLE_USERS} SET {param} = {value} WHERE username = '{username}'" if 'book' not in param else f"UPDATE {TABLE_USERS} SET {param} = '{value}' WHERE username = '{username}'"
+    if 'book' in param or 'sports' in param or 'markets' in param:
+        query = f"UPDATE {TABLE_USERS} SET {param} = '{value}' WHERE username = '{username}'"
+
+    else:
+        query = f"UPDATE {TABLE_USERS} SET {param} = {value} WHERE username = '{username}'"
 
     with conn.session as session:
         session.execute(text(query))
