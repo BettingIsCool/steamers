@@ -1,4 +1,3 @@
-import stripe_api
 import streamlit as st
 
 # set_page_config() can only be called once per app page, and must be called as the first Streamlit command in your script.
@@ -63,40 +62,21 @@ db.change_user_setting(username=username, param='maxodds', value=selected_maxodd
 selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=db.get_user_setting(username=username, param='lookahead'), step=1, help='Show only events that start within the next x hours.')
 db.change_user_setting(username=username, param='lookahead', value=selected_lookahead)
 
-st.subheader(f"Purchase bookmaker deeplinks")
-active_bookmakers = st.selectbox(label="Active bookmakers", options=[0, 1, 2, 3], index=db.get_user_setting(username=username, param='active_books'), help='Bookmaker deeplinks will be included in every alert and will take you to the respective market in one click. You can purchase up to 3 different bookmakers. You will be able to swap bookmakers at any time.')
-if active_bookmakers != db.get_user_setting(username=username, param='active_books'):
-    if active_bookmakers == 1:
-        st.write('Add-On Package (1 bookmaker) for €49.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
-        if st.button("Proceed to Payment"):
-            session = stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJzPHE7Mhw1WGhbdXbxu5X')
-            if session:
-                st.markdown(f"[Pay €49.99 Now]({session.url})")
-                while True:
+st.subheader(f"Bookmaker Deeplinks")
+col_book1, col_book2, col_book3 = st.columns([1, 1, 1])
 
-                    if stripe_api.check_payment_outcome(session_id=session.id)['status'] == 'success':
-                        st.success(f"Payment successful.")
-                        db.change_user_setting(username=username, param='active_books', value=1)
-                        break
+with col_book1:
+    selected_book1 = st.selectbox(label='Bookie 1', options=BOOKS, index=db.get_user_setting(username=username, param='book1'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    db.change_user_setting(username=username, param='book1', value=selected_book1)
 
-                    time.sleep(10)
+with col_book2:
+    selected_book2 = st.selectbox(label='Bookie 1', options=BOOKS, index=db.get_user_setting(username=username, param='book2'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    db.change_user_setting(username=username, param='book2', value=selected_book2)
 
-    elif active_bookmakers == 2:
-        st.write('Add-On Package (2 bookmakers) for €79.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
-        if st.button("Proceed to Payment"):
-            session = stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGhddGdhhSN')
-            if session:
-                st.markdown(f"[Pay €79.99 Now]({session.url})")
+with col_book3:
+    selected_book3 = st.selectbox(label='Bookie 1', options=BOOKS, index=db.get_user_setting(username=username, param='book3'), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
+    db.change_user_setting(username=username, param='book3', value=selected_book3)
 
-    elif active_bookmakers == 3:
-        st.write('Add-On Package (3 bookmakers) for €99.99', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
-        if st.button("Proceed to Payment"):
-            session = stripe_api.create_checkout_session_for_subscription(email=username, price_id='price_1RVJBcHE7Mhw1WGh3CQUKQYP')
-            if session:
-                st.markdown(f"[Pay €99.99 Now]({session.url})")
-
-    elif active_bookmakers == 0:
-        st.write('Cancel your bookmaker subscription', help='Should you have an active bookmaker subscription then you will receive a pro-rated refund for your current plan.')
 
 #         st.session_state.user_id = username
 #         st.session_state.session_id = username + '_' + str(datetime.datetime.now())
