@@ -56,8 +56,8 @@ if 'sports' not in st.session_state:
     st.session_state.sports = db.get_user_setting(username=username, param='sports').split(',')
 if 'markets' not in st.session_state:
     st.session_state.markets = db.get_user_setting(username=username, param='markets').split(',')
-if 'minval' not in st.session_state:
-    st.session_state.minval = db.get_user_setting(username=username, param='minval')
+if 'mindrop' not in st.session_state:
+    st.session_state.mindrop = db.get_user_setting(username=username, param='mindrop')
 if 'minodds' not in st.session_state:
     st.session_state.minodds = db.get_user_setting(username=username, param='minodds')
 if 'maxodds' not in st.session_state:
@@ -88,7 +88,7 @@ else:
 st.header(f"Settings")
 selected_sports = st.multiselect(label="Sports", options=SPORTS, default=st.session_state.sports, on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports should be included in your alerts?")
 selected_markets = st.multiselect(label="Markets", options=MARKETS, default=st.session_state.markets, on_change=db.change_markets, args=(username,), key='markets_key', help="Which markets should be included in your alerts?")
-selected_minval = st.slider(label='Minimum Value Threshold', min_value=0.025, max_value=1.00, value=st.session_state.minval, step=0.005, format="%0.3f", key='minval_key', on_change=db.change_minval, args=(username,), help='Enter percentage as decimal number. 5% = 0.05')
+selected_mindrop = st.slider(label='Minimum Drop Threshold', min_value=0.025, max_value=0.50, value=st.session_state.mindrop, step=0.005, format="%0.3f", key='mindrop_key', on_change=db.change_mindrop, args=(username,), help='Enter percentage as decimal number. 5% = 0.05')
 selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.minodds, step=0.05, format="%0.2f", key='minodds_key', on_change=db.change_minodds, args=(username,))
 selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.maxodds, step=0.05, format="%0.2f", key='maxodds_key', on_change=db.change_maxodds, args=(username,))
 selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=st.session_state.lookahead, step=1, key='lookahead_key', on_change=db.change_lookahead, args=(username,), help='Show only events that start within the next x hours.')
@@ -103,4 +103,4 @@ with col_book2:
 with col_book3:
     selected_book3 = st.selectbox(label='Bookie 3', options=sorted(list(BOOKS)), index=sorted(list(BOOKS)).index(st.session_state.book3), key='book3_key', on_change=db.change_book3, args=(username,), help='Deeplinks for your preferred bookmaker can be included in every alert. One click will take you to the respective market meaning a highly efficient and hassle-free bet placement.')
 
-st.write("If you can't see your preferred bookmaker listed then please get in touch at contact@bettingiscool.com and I will try to add it.")
+st.write("Can't see your preferred bookmaker listed? Then please get in touch at contact@bettingiscool.com and I will try to add it.")
