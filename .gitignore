@@ -42,3 +42,5 @@
 /_start_polling.py
 /_send_personal_steamers (moneyline).py
 /db_surebet.py
+/_send_personal_steamers (spread).py
+/_send_personal_steamers (totals).py
