@@ -301,6 +301,6 @@ def change_need_book(username: str):
     st.session_state.need_book = st.session_state.need_book_key
 
     with conn.session as session:
-        session.execute(text(f"UPDATE {TABLE_USERS} SET need_book = {st.session_state.need_book} WHERE username = '{username}'"))
+        session.execute(text(f"UPDATE {TABLE_USERS} SET need_book = '{st.session_state.need_book}' WHERE username = '{username}'"))
         session.commit()
 
