@@ -40,3 +40,5 @@
 /spreadsheet_api_key.json
 /+settle_and_export_bets.py
 /_start_polling.py
+/_send_personal_steamers (moneyline).py
+/db_surebet.py

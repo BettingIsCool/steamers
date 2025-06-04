@@ -72,6 +72,10 @@ if 'book3' not in st.session_state:
     st.session_state.book3 = db.get_user_setting(username=username, param='book3')
 if 'telegram_id' not in st.session_state:
     st.session_state.telegram_id = db.get_user_setting(username=username, param='telegram_id')
+if 'clear_cache' not in st.session_state:
+    st.session_state.clear_cache = db.get_user_setting(username=username, param='clear_cache')
+if 'need_book' not in st.session_state:
+    st.session_state.need_book = db.get_user_setting(username=username, param='need_book')
 
 # Connect Telegram
 if st.session_state.telegram_id is None:
@@ -81,7 +85,6 @@ if st.session_state.telegram_id is None:
         db.set_telegram_button_pressed(username=st.session_state.email)
         st.session_state.telegram_id = db.get_user_setting(username=username, param='telegram_id')
 else:
-    #st.sidebar.write(f"Telegram connected: {st.session_state.telegram_id}")
     st.sidebar.markdown(f"Telegram connected: :green[{st.session_state.telegram_id}]")
 
 
@@ -92,6 +95,9 @@ selected_mindrop = st.slider(label='Minimum Drop Threshold', min_value=0.025, ma
 selected_minodds = st.slider(label='Minimum Odds', min_value=1.00, max_value=10.00, value=st.session_state.minodds, step=0.05, format="%0.2f", key='minodds_key', on_change=db.change_minodds, args=(username,))
 selected_maxodds = st.slider(label='Maximum Odds', min_value=selected_minodds, max_value=100.00, value=st.session_state.maxodds, step=0.05, format="%0.2f", key='maxodds_key', on_change=db.change_maxodds, args=(username,))
 selected_lookahead = st.slider(label='Lookahead (in hours)', min_value=1, max_value=500, value=st.session_state.lookahead, step=1, key='lookahead_key', on_change=db.change_lookahead, args=(username,), help='Show only events that start within the next x hours.')
+selected_clear_cache = st.slider(label='Clear Cache (in minutes)', min_value=5, max_value=10000, value=st.session_state.clear_cache, step=1, key='clear_cache_key', on_change=db.change_clear_cache, args=(username,), help='Choose a time after which old alerts should be removed. For example, if you get an alert for the "Roma vs Inter" event and want to stop receiving alerts for the same event and market, set clear_cache to the maximum value (10000). If you set clear_cache to 5, you’ll receive alerts for the same event and market again after 5 minutes have passed since the last alert.')
+selected_need_book = st.radio(label='Need Bookie', options=['yes', 'no'], index=1, key='need_book_key', on_change=db.change_need_book, args=(username,), help='Choose YES if you only want to receive messages with a link of at least one of your selected bookmakers. Select NO if you want to receive all alerts (regardless of whether a link is included or not).')
+
 
 st.subheader(f"Bookmaker Deeplinks")
 col_book1, col_book2, col_book3 = st.columns([1, 1, 1])

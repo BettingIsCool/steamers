@@ -42,10 +42,10 @@ def append_user(data: dict):
     :type data: dict
     :return: None
     """
-    query = f"INSERT INTO {TABLE_USERS} (username, sports, markets, mindrop, minodds, maxodds, lookahead, book1, book2, book3) VALUES(:username, :sports, :markets, :mindrop, :minodds, :maxodds, :lookahead, :book1, :book2, :book3)"
+    query = f"INSERT INTO {TABLE_USERS} (username, sports, markets, mindrop, minodds, maxodds, lookahead, book1, book2, book3, clear_cache, need_book) VALUES(:username, :sports, :markets, :mindrop, :minodds, :maxodds, :lookahead, :book1, :book2, :book3, :clear_cache, :need_book)"
 
     with conn.session as session:
-        session.execute(text(query), params=dict(username=data['username'], sports='Alpine Skiing,Archery,Athletics,Aussie Rules,Badminton,Bandy,Baseball,Basketball,Beach Volleyball,Biathlon,Bobsleigh,Boxing,Chess,Cricket,Cross Country,Crossfit,Curling,Cycling,Darts,Drone Racing,E Sports,Entertainment,Field Hockey,Figure Skating,Floorball,Football,Formula 1,Freestyle Skiing,Futsal,Golf,Handball,Hockey,Horse Racing Specials,Lacrosse,Luge,Mixed Martial Arts,Motorsport,Nordic Combined,Olympics,Other Sports,Padel Tennis,Pickleball,Poker,Politics,Rugby League,Rugby Union,Short Track,Simulated Games,Skeleton,Ski Jumping,Slap Fighting,Snooker,Snow Boarding,Soccer,Softball,Speed Skating,Squash,Sumo,Table Tennis,Tennis,Volleyball,Water Polo', markets='moneyline,spread,totals', mindrop=0.10, minodds=1.01, maxodds=100.00, lookahead=8, book1='No Book', book2='No Book', book3='No Book'))
+        session.execute(text(query), params=dict(username=data['username'], sports='Alpine Skiing,Archery,Athletics,Aussie Rules,Badminton,Bandy,Baseball,Basketball,Beach Volleyball,Biathlon,Bobsleigh,Boxing,Chess,Cricket,Cross Country,Crossfit,Curling,Cycling,Darts,Drone Racing,E Sports,Entertainment,Field Hockey,Figure Skating,Floorball,Football,Formula 1,Freestyle Skiing,Futsal,Golf,Handball,Hockey,Horse Racing Specials,Lacrosse,Luge,Mixed Martial Arts,Motorsport,Nordic Combined,Olympics,Other Sports,Padel Tennis,Pickleball,Poker,Politics,Rugby League,Rugby Union,Short Track,Simulated Games,Skeleton,Ski Jumping,Slap Fighting,Snooker,Snow Boarding,Soccer,Softball,Speed Skating,Squash,Sumo,Table Tennis,Tennis,Volleyball,Water Polo', markets='moneyline,spread,totals', mindrop=0.10, minodds=1.01, maxodds=100.00, lookahead=8, book1='No Book', book2='No Book', book3='No Book', clear_cache=5, need_book='no'))
         session.commit()
 
 
@@ -264,3 +264,43 @@ def set_telegram_button_pressed(username: str):
     with conn.session as session:
         session.execute(text(query))
         session.commit()
+
+
+@st.cache_data()
+def change_clear_cache(username: str):
+    """
+    Clears and updates the user's cache setting in the database. This function interacts
+    with the database to modify the `clear_cache` property for the user with the specified
+    username. The modified value is based on the session state's `clear_cache_key`.
+
+    :param username: The username of the user whose cache setting
+        is to be changed.
+    :type username: str
+    :return: None
+    """
+    st.session_state.clear_cache = st.session_state.clear_cache_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET clear_cache = {st.session_state.clear_cache} WHERE username = '{username}'"))
+        session.commit()
+
+
+@st.cache_data()
+def change_need_book(username: str):
+    """
+    Updates the `need_book` field for a specific user in the database based on the session state.
+
+    This function modifies the value of `st.session_state.need_book`, then performs an
+    SQL `UPDATE` query to set the corresponding `need_book` field in the user record
+    where the username matches.
+
+    :param username: The username of the user whose `need_book` field will be updated.
+    :type username: str
+    :return: None
+    """
+    st.session_state.need_book = st.session_state.need_book_key
+
+    with conn.session as session:
+        session.execute(text(f"UPDATE {TABLE_USERS} SET need_book = {st.session_state.need_book} WHERE username = '{username}'"))
+        session.commit()
+
