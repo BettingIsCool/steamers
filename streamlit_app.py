@@ -85,9 +85,7 @@ if st.session_state.telegram_id is None:
         db.set_telegram_button_pressed(username=st.session_state.email)
         st.session_state.telegram_id = db.get_user_setting(username=username, param='telegram_id')
 else:
-    #st.sidebar.markdown(f"Telegram connected: :green[{st.session_state.telegram_id}]")
-    st.sidebar.markdown(f"Telegram connected: :green[8248284226532]")
-
+    st.sidebar.markdown(f"Telegram connected: :green[{st.session_state.telegram_id}]")
 
 st.header(f"Settings")
 selected_sports = st.multiselect(label="Sports", options=SPORTS, default=st.session_state.sports, on_change=db.change_sports, args=(username,), key='sports_key', help="Which sports should be included in your alerts?")
