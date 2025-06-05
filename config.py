@@ -109,6 +109,23 @@ BOOKS.add('Solcasino')
 BOOKS.add('Yonibet')
 BOOKS.add('Yonibet_EU')
 
+BOOKS.add('bet365_28365365')
+BOOKS.add('bet365_365_808')
+BOOKS.add('bet365_365sb')
+BOOKS.add('bet365_365sport365')
+BOOKS.add('bet365_878365')
+BOOKS.add('Allsport365')
+BOOKS.add('Bet365')
+BOOKS.add('Bet365_AU')
+BOOKS.add('Bet365_BR')
+BOOKS.add('Bet365_DE')
+BOOKS.add('Bet365_ES')
+BOOKS.add('Bet365_GR')
+BOOKS.add('Bet365_IT')
+BOOKS.add('Bet365_NL')
+BOOKS.add('Game_365_CN')
+
+
 TEXT_LANDING_PAGE = """
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
