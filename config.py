@@ -125,6 +125,8 @@ BOOKS.add('Bet365_IT')
 BOOKS.add('Bet365_NL')
 BOOKS.add('Game_365_CN')
 
+BOOKS.add('Winamax_DE')
+BOOKS.add('Winamax_ES')
 
 TEXT_LANDING_PAGE = """
 
