@@ -128,6 +128,9 @@ BOOKS.add('Game_365_CN')
 BOOKS.add('Winamax_DE')
 BOOKS.add('Winamax_ES')
 
+BOOKS.add('BetRebels')
+BOOKS.add('Jokerbet_ES')
+
 TEXT_LANDING_PAGE = """
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
