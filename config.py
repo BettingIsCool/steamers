@@ -133,6 +133,11 @@ BOOKS.add('Jokerbet_ES')
 
 BOOKS.add('TAB_AU')
 
+BOOKS.add('Unibet')
+BOOKS.add('Casumo')
+BOOKS.add('Casumo_ES')
+BOOKS.add('Unibet_AU')
+
 TEXT_LANDING_PAGE = """
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
