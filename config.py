@@ -138,6 +138,13 @@ BOOKS.add('Casumo')
 BOOKS.add('Casumo_ES')
 BOOKS.add('Unibet_AU')
 
+BOOKS.add('Bwin')
+BOOKS.add('Betboo_BR')
+
+BOOKS.add('Pointsbet_AU')
+
+BOOKS.add('Sportsbet_AU')
+
 TEXT_LANDING_PAGE = """
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
