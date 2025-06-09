@@ -71,6 +71,8 @@ MARKETS.append('totals')
 
 BOOKS = set()
 BOOKS.add('No Book')
+
+# Blaze Skins
 BOOKS.add('4RaBet')
 BOOKS.add('Africa365')
 BOOKS.add('BCGame')
@@ -109,6 +111,7 @@ BOOKS.add('Solcasino')
 BOOKS.add('Yonibet')
 BOOKS.add('Yonibet_EU')
 
+# Bet365 Skins
 BOOKS.add('bet365_28365365')
 BOOKS.add('bet365_365_808')
 BOOKS.add('bet365_365sb')
@@ -125,19 +128,66 @@ BOOKS.add('Bet365_IT')
 BOOKS.add('Bet365_NL')
 BOOKS.add('Game_365_CN')
 
+# Winamax Skins
 BOOKS.add('Winamax_DE')
 BOOKS.add('Winamax_ES')
 
+# BetRebels Skins
 BOOKS.add('BetRebels')
 BOOKS.add('Jokerbet_ES')
+BOOKS.add('21Bets')
+BOOKS.add('7bet_LT')
+BOOKS.add('Bankonbet')
+BOOKS.add('BaumBet_RO')
+BOOKS.add('bBets')
+BOOKS.add('Betinia_DK')
+BOOKS.add('Betinia_SE')
+BOOKS.add('Betmotion')
+BOOKS.add('BetNFlix')
+BOOKS.add('Betvision')
+BOOKS.add('CampoBet')
+BOOKS.add('CampoBet_DK')
+BOOKS.add('DoradoBet')
+BOOKS.add('Ecuabet')
+BOOKS.add('ElaBet_GR')
+BOOKS.add('Fastbet_IT')
+BOOKS.add('FezBet')
+BOOKS.add('FrankSports_RO')
+BOOKS.add('GoldenPalace_BE')
+BOOKS.add('LibraBet')
+BOOKS.add('MrBit_BG')
+BOOKS.add('MrBit_RO')
+BOOKS.add('PowBet')
+BOOKS.add('Rabona')
+BOOKS.add('RtBet')
+BOOKS.add('Sevenplay')
+BOOKS.add('Spinanga')
+BOOKS.add('Sportaza')
+BOOKS.add('StarCasinoSport_BE')
 
-BOOKS.add('TAB_AU')
-
+# Unibet Skins
 BOOKS.add('Unibet')
 BOOKS.add('Casumo')
 BOOKS.add('Casumo_ES')
 BOOKS.add('Unibet_AU')
+BOOKS.add('32Red')
+BOOKS.add('ATG_SE')
+BOOKS.add('Betmgm_NL')
+BOOKS.add('Betmgm_SE')
+BOOKS.add('Betmgm_UK')
+BOOKS.add('GrosvenorCasinos')
+BOOKS.add('No_Account_Bet_SE')
+BOOKS.add('Paf')
+BOOKS.add('Paf_ES')
+BOOKS.add('Paf_SE')
+BOOKS.add('PafBet_LV')
+BOOKS.add('Scoore_BE')
+BOOKS.add('Unibet_IT')
+BOOKS.add('Unibet_NL')
+BOOKS.add('Unibet_RO')
+BOOKS.add('Unibet_UK')
 
+# Bwin Skins
 BOOKS.add('Bwin')
 BOOKS.add('Betboo_BR')
 BOOKS.add('Betmgm_CA')
@@ -159,9 +209,46 @@ BOOKS.add('Sportingbet_GR')
 BOOKS.add('Sportingbet_ZA')
 BOOKS.add('Vistabet_GR')
 
+# Pointsbet (AU) Skins
 BOOKS.add('Pointsbet_AU')
 
+# Sportsbet (AU) Skins
 BOOKS.add('Sportsbet_AU')
+
+# TAB (AU) Skins
+BOOKS.add('TAB_AU')
+
+# BetOnline Skins
+BOOKS.add('BetOnline_AG')
+BOOKS.add('SportsBetting')
+BOOKS.add('TigerGaming')
+
+# Betsson_ES Skins
+BOOKS.add('Betsson_ES')
+BOOKS.add('Betpark_BR')
+BOOKS.add('SupremaBet_BR')
+
+# Betano_PT Skins
+BOOKS.add('Betano_PT')
+BOOKS.add('Betano_NG')
+BOOKS.add('Betano_AR')
+BOOKS.add('Betano_BR')
+BOOKS.add('Betano_CI')
+BOOKS.add('Betano_CZ')
+BOOKS.add('Betano_EC')
+BOOKS.add('Betano_CA')
+BOOKS.add('Betano_BE')
+BOOKS.add('Betano_MX')
+BOOKS.add('Betano_BG')
+BOOKS.add('Betano_CO')
+BOOKS.add('Betano_DK')
+BOOKS.add('Betano_UK')
+BOOKS.add('Betano_DE')
+BOOKS.add('Betano_PE')
+BOOKS.add('Betano_RO')
+
+# PaddyPower Skins
+BOOKS.add('PaddyPower')
 
 TEXT_LANDING_PAGE = """
 
