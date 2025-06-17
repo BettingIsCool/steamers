@@ -251,6 +251,11 @@ BOOKS.add('Betano_RO')
 # PaddyPower Skins
 BOOKS.add('PaddyPower')
 
+# BetClic Skins
+BOOKS.add('BetClic_PT')
+BOOKS.add('BetClic_PL')
+BOOKS.add('BetClic_FR')
+
 TEXT_LANDING_PAGE = """
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
