@@ -256,6 +256,10 @@ BOOKS.add('BetClic_PT')
 BOOKS.add('BetClic_PL')
 BOOKS.add('BetClic_FR')
 
+# William Hill
+BOOKS.add('WilliamHill')
+BOOKS.add('WilliamHill_ES')
+
 TEXT_LANDING_PAGE = """
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
