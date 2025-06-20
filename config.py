@@ -274,7 +274,7 @@ TEXT_LANDING_PAGE = f"""
 
 🔥 Multisport Support: With more than 40 sports supported, we've got you covered!
 
-🔥 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 900 bookmakers.
+🔥 Extensive Market Coverage: Dive into moneyline, spread, and totals across over 200 bookmakers.
 
 🔥 Alerts delivered via telegram 24/7!
 
