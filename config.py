@@ -260,7 +260,7 @@ BOOKS.add('BetClic_FR')
 BOOKS.add('WilliamHill')
 BOOKS.add('WilliamHill_ES')
 
-TEXT_LANDING_PAGE = """
+TEXT_LANDING_PAGE = f"""
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
 
@@ -283,5 +283,7 @@ TEXT_LANDING_PAGE = """
 👉 Then I recommend heading over to my website for a detailed description https://bettingiscool.com/pinnacle-steamers/
 
 ️🐦 Follow me on X https://x.com/BettingIsCool for regular updates and betting related content!
+
+{BOOKS}
 """
 
