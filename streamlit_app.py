@@ -19,10 +19,11 @@ placeholder3 = st.empty()
 
 if 'display_landing_page_text' not in st.session_state:
 
+    bookie_text = f"The following bookmakers are supported: {', '.join(sorted(list(BOOKS)))}"
     # Display landing page (pre login)
     placeholder1.markdown(TEXT_LANDING_PAGE)
     placeholder2.image('chart.png', use_container_width='auto')
-    placeholder3 = st.markdown(BOOKS)
+    placeholder3 = st.markdown(bookie_text)
     st.session_state.display_landing_page_text = True
 
 # Add google authentication (only users with a valid stripe subscription can log in)
