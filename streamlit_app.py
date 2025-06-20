@@ -15,6 +15,7 @@ from streamlit_autorefresh import st_autorefresh
 
 placeholder1 = st.empty()
 placeholder2 = st.empty()
+placeholder3 = st.empty()
 
 if 'display_landing_page_text' not in st.session_state:
 
