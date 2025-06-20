@@ -284,6 +284,5 @@ TEXT_LANDING_PAGE = f"""
 
 ️🐦 Follow me on X https://x.com/BettingIsCool for regular updates and betting related content!
 
-{BOOKS}
 """
 

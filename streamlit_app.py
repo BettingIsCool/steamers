@@ -21,6 +21,7 @@ if 'display_landing_page_text' not in st.session_state:
     # Display landing page (pre login)
     placeholder1.markdown(TEXT_LANDING_PAGE)
     placeholder2.image('chart.png', use_container_width='auto')
+    placeholder3 = st.markdown(BOOKS)
     st.session_state.display_landing_page_text = True
 
 # Add google authentication (only users with a valid stripe subscription can log in)
@@ -42,6 +43,7 @@ st.sidebar.subheader(f"Welcome {username}")
 
 placeholder1.empty()
 placeholder2.empty()
+placeholder3.empty()
 
 st.cache_data.clear()
 
