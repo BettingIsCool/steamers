@@ -262,7 +262,7 @@ TEXT_LANDING_PAGE = f"""
 
 🔥 Instant Market Alerts: Get notified the moment there's a significant price drop. Never miss an opportunity again!
 
-🔥 One-Click Betting: With integrated deep links, go from notification to bet placement in a single click. Fast and furious!
+🔥 One-Click Betting: With integrated bookmaker links, go from notification to bet placement in a single click. Fast and furious!
 
 🔥 Total Customization: Tailor your alerts by setting your minimum value threshold, preferred bookmakers, lookahead time, and more.
 
