@@ -7,11 +7,16 @@ import time
 import pytz
 from config import SPORTS, MARKETS, BOOKS, TEXT_LANDING_PAGE
 
-
 import datetime
 import pandas as pd
 import db_steamers_remote as db
 from streamlit_autorefresh import st_autorefresh
+
+# TODO check new bookie arrivals for existing skins
+# TODO add bookies outside of api plan
+# TODO league filter (black & whitelist)
+# TODO collect bookie urls (semi-automated) and send to david
+# TODO bookie requests: GoldenPark (ES) @AVFbetting, Retabet (ES) @faustopicks, Betfair (ES) @faustopicks
 
 placeholder1 = st.empty()
 placeholder2 = st.empty()
