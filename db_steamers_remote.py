@@ -45,7 +45,7 @@ def append_user(data: dict):
     query = f"INSERT INTO {TABLE_USERS} (username, sports, markets, mindrop, minodds, maxodds, lookahead, book1, book2, book3, clear_cache, need_book) VALUES(:username, :sports, :markets, :mindrop, :minodds, :maxodds, :lookahead, :book1, :book2, :book3, :clear_cache, :need_book)"
 
     with conn.session as session:
-        session.execute(text(query), params=dict(username=data['username'], sports='Alpine Skiing,Archery,Athletics,Aussie Rules,Badminton,Bandy,Baseball,Basketball,Beach Volleyball,Biathlon,Bobsleigh,Boxing,Chess,Cricket,Cross Country,Crossfit,Curling,Cycling,Darts,Drone Racing,E Sports,Entertainment,Field Hockey,Figure Skating,Floorball,Football,Formula 1,Freestyle Skiing,Futsal,Golf,Handball,Hockey,Horse Racing Specials,Lacrosse,Luge,Mixed Martial Arts,Motorsport,Nordic Combined,Olympics,Other Sports,Padel Tennis,Pickleball,Poker,Politics,Rugby League,Rugby Union,Short Track,Simulated Games,Skeleton,Ski Jumping,Slap Fighting,Snooker,Snow Boarding,Soccer,Softball,Speed Skating,Squash,Sumo,Table Tennis,Tennis,Volleyball,Water Polo', markets='moneyline,spread,totals', mindrop=0.10, minodds=1.01, maxodds=100.00, lookahead=8, book1='No Book', book2='No Book', book3='No Book', clear_cache=5, need_book='no'))
+        session.execute(text(query), params=dict(username=data['username'], sports='Baseball,Basketball,Boxing,E Sports,Football,Hockey,Mixed Martial Arts,Soccer,Tennis,Volleyball', markets='moneyline,spread,totals', mindrop=0.10, minodds=1.01, maxodds=100.00, lookahead=8, book1='No Book', book2='No Book', book3='No Book', clear_cache=5, need_book='no'))
         session.commit()
 
 
