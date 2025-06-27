@@ -88,6 +88,7 @@ if 'need_book' not in st.session_state:
 
 # Connect Telegram
 if st.session_state.telegram_id is None:
+    st.sidebar.markdown(f":red[Your telegram account is currently not connected. Please connect to receive alerts.]")
     if st.sidebar.button("Connect Telegram", help="Hit this button to receive telegram alerts.", type="secondary"):
         url = "https://t.me/psp_ultra_bot/"
         st.sidebar.markdown(f'<a href="{url}" target="_blank">Click here to connect! Link will expire in 1 minute.</a>', unsafe_allow_html=True)
