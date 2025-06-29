@@ -16,7 +16,7 @@ from streamlit_autorefresh import st_autorefresh
 # TODO add bookies outside of api plan
 # TODO league filter (black & whitelist)
 # TODO collect bookie urls (semi-automated) and send to david
-# TODO bookie requests: GoldenPark (ES) @AVFbetting, Retabet (ES) @faustopicks, Betfair (ES) @faustopicks
+# TODO bookie requests: GoldenPark (ES) @AVFbetting, Retabet (ES) @faustopicks, Betfair (ES) @faustopicks, Retabet (ES) Marc Raventos
 
 placeholder1 = st.empty()
 placeholder2 = st.empty()

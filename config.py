@@ -202,6 +202,9 @@ BOOKS.add('BetClic_FR')
 BOOKS.add('WilliamHill')
 BOOKS.add('WilliamHill_ES')
 
+# RetaBet (ES)
+BOOKS.add('RetaBet_ES')
+
 TEXT_LANDING_PAGE = f"""
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
