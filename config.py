@@ -127,6 +127,7 @@ BOOKS.add('Scoore_BE')
 BOOKS.add('Unibet_IT')
 BOOKS.add('Unibet_NL')
 BOOKS.add('Unibet_RO')
+BOOKS.add('Unibet_SE')
 BOOKS.add('Unibet_UK')
 BOOKS.add('TABtouch_AU')
 
