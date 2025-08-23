@@ -206,6 +206,9 @@ BOOKS.add('WilliamHill_ES')
 # RetaBet (ES)
 BOOKS.add('RetaBet_ES')
 
+# Sportium (ES)
+BOOKS.add('Sportium_ES')
+
 TEXT_LANDING_PAGE = f"""
 
 ### **#ChasingSteamers Personal. Your personalized dropping odds feed.**
