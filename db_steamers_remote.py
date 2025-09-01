@@ -45,7 +45,7 @@ def append_user(data: dict):
     query = f"INSERT INTO {TABLE_USERS} (username, sports, markets, mindrop, minodds, maxodds, lookahead, book1, book2, book3, clear_cache, need_book) VALUES(:username, :sports, :markets, :mindrop, :minodds, :maxodds, :lookahead, :book1, :book2, :book3, :clear_cache, :need_book)"
 
     with conn.session as session:
-        session.execute(text(query), params=dict(username=data['username'], sports='Soccer,Tennis,Basketball,Hockey,Volleyball,Handball,American Football,MMA,Baseball,E Sports,Cricket', markets='moneyline,spread,totals', mindrop=0.10, minodds=1.01, maxodds=100.00, lookahead=8, book1='No Book', book2='No Book', book3='No Book', clear_cache=5, need_book='no'))
+        session.execute(text(query), params=dict(username=data['username'], sports='Soccer,Tennis,Basketball,Hockey,Volleyball,Handball,American Football,Mixed Martial Arts,Baseball,E Sports,Cricket', markets='moneyline,spread,totals', mindrop=0.10, minodds=1.01, maxodds=100.00, lookahead=8, book1='No Book', book2='No Book', book3='No Book', clear_cache=5, need_book='no'))
         session.commit()
 
 
