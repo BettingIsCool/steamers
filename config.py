@@ -1,16 +1,18 @@
 TABLE_USERS = 'users'
 
 SPORTS = list()
-SPORTS.append('Baseball')
-SPORTS.append('Basketball')
-SPORTS.append('Boxing')
-SPORTS.append('E Sports')
-SPORTS.append('Football')
-SPORTS.append('Hockey')
-SPORTS.append('Mixed Martial Arts')
 SPORTS.append('Soccer')
 SPORTS.append('Tennis')
+SPORTS.append('Basketball')
+SPORTS.append('Hockey')
 SPORTS.append('Volleyball')
+SPORTS.append('Handball')
+SPORTS.append('American Football')
+SPORTS.append('MMA')
+SPORTS.append('Baseball')
+SPORTS.append('E Sports')
+SPORTS.append('Cricket')
+
 
 MARKETS = list()
 MARKETS.append('moneyline')
