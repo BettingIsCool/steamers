@@ -133,6 +133,7 @@ BOOKS.add('Unibet_RO')
 BOOKS.add('Unibet_SE')
 BOOKS.add('Unibet_UK')
 BOOKS.add('TABtouch_AU')
+BOOKS.add('Leovegas_ES')
 
 # Bwin Skins
 BOOKS.add('Bwin')
