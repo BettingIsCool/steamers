@@ -13,7 +13,6 @@ SPORTS.append('Baseball')
 SPORTS.append('E Sports')
 SPORTS.append('Cricket')
 
-
 MARKETS = list()
 MARKETS.append('moneyline')
 MARKETS.append('spread')
