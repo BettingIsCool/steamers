@@ -23,6 +23,7 @@ BOOKS.add('No Book')
 
 # Blaze/Casinozer Skins
 BOOKS.add('Apostaganha')
+BOOKS.add('Betcoin')
 BOOKS.add('Betify')
 BOOKS.add('BetPlay')
 BOOKS.add('Rivalry')
