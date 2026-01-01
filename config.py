@@ -26,6 +26,7 @@ BOOKS.add('Apostaganha')
 BOOKS.add('Betcoin')
 BOOKS.add('Betify')
 BOOKS.add('BetPlay')
+BOOKS.add('BetTilt')
 BOOKS.add('Rivalry')
 BOOKS.add('Roobet')
 
