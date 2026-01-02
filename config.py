@@ -34,8 +34,13 @@ BOOKS.add('CsGo500')
 BOOKS.add('Fortunejack')
 BOOKS.add('Ganhei')
 BOOKS.add('Hugewin')
+BOOKS.add('JonBet_BR')
+BOOKS.add('Opabet')
+BOOKS.add('Riobet')
 BOOKS.add('Rivalry')
 BOOKS.add('Roobet')
+BOOKS.add('Solcasino')
+BOOKS.add('TrBet')
 
 # Bet365 Skins
 BOOKS.add('Bet365')
