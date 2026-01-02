@@ -29,6 +29,8 @@ BOOKS.add('BetPlay')
 BOOKS.add('BetTilt')
 BOOKS.add('Bitz')
 BOOKS.add('Blaze_BR')
+BOOKS.add('Bons')
+BOOKS.add('CsGo500')
 BOOKS.add('Rivalry')
 BOOKS.add('Roobet')
 
