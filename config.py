@@ -31,6 +31,7 @@ BOOKS.add('Bitz')
 BOOKS.add('Blaze_BR')
 BOOKS.add('Bons')
 BOOKS.add('CsGo500')
+BOOKS.add('Fortunejack')
 BOOKS.add('Rivalry')
 BOOKS.add('Roobet')
 
