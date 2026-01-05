@@ -77,6 +77,7 @@ BOOKS.add('Son77')
 # Winamax Skins
 BOOKS.add('Winamax_DE')
 BOOKS.add('Winamax_ES')
+BOOKS.add('Pepeta')
 
 # Unibet (AU) Skins
 BOOKS.add('Unibet_AU')
