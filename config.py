@@ -62,6 +62,17 @@ BOOKS.add('Roobet')
 # Bet365 Skins
 BOOKS.add('Bet365')
 BOOKS.add('Bet365_AU')
+BOOKS.add('188sb')
+BOOKS.add('365sport365')
+BOOKS.add('Allsport365')
+BOOKS.add('BetMart')
+BOOKS.add('Bet365_BR')
+BOOKS.add('Bet365_DE')
+BOOKS.add('Bet365_ES')
+BOOKS.add('Bet365_GR')
+BOOKS.add('Bet365_IT')
+BOOKS.add('Bet365_NL')
+BOOKS.add('Son77')
 
 # Winamax Skins
 BOOKS.add('Winamax_DE')
