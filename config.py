@@ -90,6 +90,9 @@ BOOKS.add('TAB_AU')
 
 # BetOnline Skins
 BOOKS.add('BetOnline_AG')
+BOOKS.add('LowVig')
+BOOKS.add('Tigergaming')
+BOOKS.add('SportsBetting')
 
 # RetaBet (ES)
 BOOKS.add('RetaBet_ES')
